@@ -1,0 +1,153 @@
+name: SuperRare
+description: SuperRare is a premier digital art marketplace and auction house built on Ethereum for discovering, collecting, and trading unique single-edition digital artworks as NFTs. The platform provides REST APIs, a profile/creator SDK, smart contract interfaces, and a CLI for accessing artwork metadata, artist profiles, auction data, edition information, and sales history.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - NFT
+  - Digital Art
+  - Marketplace
+  - Ethereum
+  - Blockchain
+  - Auctions
+  - Collectibles
+apis:
+  - name: SuperRare Marketplace API
+    description: REST API providing programmatic access to SuperRare artwork metadata, artist profiles, auction data, edition information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.superrare.com/
+    baseURL: https://api.superrare.com
+    tags:
+      - NFT
+      - Artwork
+      - Auctions
+      - Sales
+      - Metadata
+    properties:
+      - type: Documentation
+        url: https://developer.superrare.com/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/openapi.yml
+      - type: Plans
+        url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/plans/plans.yml
+      - type: RateLimits
+        url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/rate-limits/rate-limits.yml
+      - type: FinOps
+        url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/finops/finops.yml
+    contact:
+      - FN: SuperRare Support
+        url: https://help.superrare.com/
+        email: ''
+  - name: SuperRare Profile & Creator API
+    description: SDK and CLI for programmatic management of rare.xyz creator profiles, storefronts, products, posts, social interactions, messages, analytics, and events. Uses OAuth device flow authentication with scoped personal access tokens.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://github.com/superrare/rare-profile
+    baseURL: https://beta.rare.xyz
+    tags:
+      - Creator
+      - Profile
+      - Storefront
+      - OAuth
+      - SDK
+    properties:
+      - type: Documentation
+        url: https://github.com/superrare/rare-profile
+      - type: SDKs
+        url: https://www.npmjs.com/package/@rareprotocol/rare-profile
+    contact:
+      - FN: SuperRare Labs GitHub
+        url: https://github.com/superrare
+        email: ''
+  - name: SuperRare Rare Protocol CLI
+    description: Command-line interface and SDK for deploying ERC-721 NFT collections, minting tokens, managing reserve-price auctions, and querying tokens and collections on Ethereum Mainnet, Sepolia, Base, and Base Sepolia. Includes Model Context Protocol (MCP) server for AI agent integration.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://github.com/superrare/rare-cli
+    baseURL: https://api.superrare.com
+    tags:
+      - CLI
+      - ERC-721
+      - Minting
+      - Auctions
+      - MCP
+      - AI Agents
+    properties:
+      - type: Documentation
+        url: https://github.com/superrare/rare-cli
+      - type: SDKs
+        url: https://www.npmjs.com/package/@rareprotocol/rare-cli
+    contact:
+      - FN: SuperRare Labs GitHub
+        url: https://github.com/superrare
+        email: ''
+  - name: SuperRare Smart Contracts - The Bazaar
+    description: Unified marketplace and auction house smart contract on Ethereum that enables reserve-price auctions, sale price listings, offer placement, and bid management for curated digital art NFTs. Supports non-custodial transactions and the conversion of offers into auction bids.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.superrare.com/smart-contracts/the-bazaar/
+    baseURL: https://ethereum.org
+    tags:
+      - Smart Contracts
+      - Ethereum
+      - Auctions
+      - Marketplace
+      - Solidity
+    properties:
+      - type: Documentation
+        url: https://developer.superrare.com/smart-contracts/the-bazaar/
+      - type: GettingStarted
+        url: https://docs.superrare.com/
+    contact:
+      - FN: SuperRare Developer Documentation
+        url: https://developer.superrare.com/
+        email: ''
+  - name: SuperRare Smart Contracts - Assets (ERC-721)
+    description: SuperRare ERC-721 NFT asset contracts including shared minting contracts (SuperRareV1, SuperRareV2), creator-owned Sovereign minting contracts (Series), and curator-managed Space contracts. The Approved Token Registry controls which tokens are supported by the Bazaar marketplace.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.superrare.com/smart-contracts/assets/
+    baseURL: https://ethereum.org
+    tags:
+      - Smart Contracts
+      - ERC-721
+      - NFT
+      - Minting
+      - Ethereum
+    properties:
+      - type: Documentation
+        url: https://developer.superrare.com/smart-contracts/assets/
+      - type: GitHubRepository
+        url: https://github.com/superrare/pixura-contracts
+    contact:
+      - FN: SuperRare Developer Documentation
+        url: https://developer.superrare.com/
+        email: ''
+common:
+  - type: Portal
+    url: https://developer.superrare.com/
+  - type: Documentation
+    url: https://docs.superrare.com/
+  - type: HelpCenter
+    url: https://help.superrare.com/
+  - type: Forum
+    url: https://forum.rare.xyz/
+  - type: GitHubOrganization
+    url: https://github.com/superrare
+  - type: Website
+    url: https://superrare.com/
+  - type: Blog
+    url: https://superrare.com/magazine
+  - type: Marketplace
+    url: https://superrare.com/explore
+  - type: Governance
+    url: https://docs.superrare.com/
+  - type: WhitePaper
+    url: https://docs.superrare.com/whitepapers/master
+  - type: TermsOfService
+    url: https://campaigns.superrare.com/terms
+  - type: SDK
+    url: https://www.npmjs.com/package/@rareprotocol/rare-cli
+  - type: SDK
+    url: https://www.npmjs.com/package/@rareprotocol/rare-profile
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

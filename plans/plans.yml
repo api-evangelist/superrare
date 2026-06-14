@@ -1,0 +1,42 @@
+name: SuperRare API Plans
+description: SuperRare operates a curated NFT marketplace. The platform does not publicly advertise tiered REST API access plans. Smart contract interaction is permissionless on-chain. The creator profile API uses OAuth tokens with defined scopes. Public RPC endpoints are rate-limited; production use requires a dedicated RPC provider such as Alchemy or Infura.
+url: https://developer.superrare.com/
+plans:
+  - name: Public / Open
+    description: Permissionless access to SuperRare smart contracts on Ethereum Mainnet, Sepolia, Base, and Base Sepolia. Anyone can read artwork metadata, query auctions, and interact with the Bazaar and ERC-721 contracts directly on-chain.
+    contact:
+      url: https://help.superrare.com/
+    features:
+      - Permissionless smart contract reads (The Bazaar, SuperRareV1, SuperRareV2)
+      - NFT metadata via IPFS
+      - On-chain auction and sale data
+      - Public token queries via rare-cli
+    authentication: Wallet private key (for write operations); no key required for reads
+    rateLimits:
+      - type: RPC
+        note: Public Ethereum RPC endpoints are rate-limited; production use requires a dedicated provider (Alchemy, Infura, etc.)
+  - name: Creator / OAuth
+    description: Authenticated access to the rare.xyz creator profile API using OAuth device flow. Grants scoped access to manage profiles, storefronts, products, posts, social interactions, messages, analytics, and events. Purchase and wallet scopes are not available to CLI tokens.
+    contact:
+      url: https://github.com/superrare/rare-profile
+    features:
+      - Profile management
+      - Storefront and product management
+      - Posts and social interactions
+      - Analytics and events
+      - Messages
+      - Studio (requires studio scope)
+    authentication: OAuth 2.0 device flow; slk_ personal access token stored in ~/.rare-profile/config.json; exchanged for short-lived (15-minute) session JWT
+    scopes:
+      - profile
+      - links
+      - storefronts
+      - products
+      - apps
+      - posts
+      - social
+      - messages
+      - analytics
+      - events
+      - studio
+    rateLimits: []

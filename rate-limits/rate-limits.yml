@@ -1,0 +1,21 @@
+name: SuperRare API Rate Limits
+description: SuperRare does not publish explicit rate limit tiers for its REST API. Smart contract interactions are limited by Ethereum network throughput and gas. The rare-cli documentation explicitly warns that public Ethereum RPC endpoints are rate-limited and unreliable, recommending dedicated RPC providers for production use.
+url: https://developer.superrare.com/
+rateLimits:
+  - name: Public Ethereum RPC
+    description: Public Ethereum RPC endpoints used for on-chain reads are rate-limited by the provider. SuperRare's rare-cli documentation explicitly warns against relying on public RPC in production environments.
+    type: RPC
+    notes: Use a dedicated RPC provider such as Alchemy (https://www.alchemy.com/) or Infura (https://infura.io/) to avoid rate limiting.
+    recommended:
+      - Alchemy
+      - Infura
+    override: Set the RARE_API_BASE_URL environment variable to point the SDK and CLI at a custom rare-api deployment.
+  - name: Creator Profile API (rare.xyz)
+    description: Rate limit details for the rare.xyz creator API (https://beta.rare.xyz) are not publicly documented. Tokens are short-lived (15-minute JWTs) and are automatically refreshed by the SDK.
+    type: REST
+    tokenLifetime: 15 minutes (session JWT; refreshed transparently)
+    notes: No explicit rate limit figures published in public documentation as of 2026.
+  - name: SuperRare Marketplace API
+    description: Rate limit details for https://api.superrare.com are not publicly documented. This API is consumed internally by the rare-cli and rare-profile SDK.
+    type: REST
+    notes: No explicit rate limit figures published in public documentation as of 2026.

@@ -1,0 +1,31 @@
+name: SuperRare FinOps
+description: SuperRare's financial model is based on marketplace transaction fees rather than API subscription pricing. There are no publicly documented API access fees. Costs arise from Ethereum gas fees for on-chain interactions (minting, bidding, settling auctions) and optional third-party RPC provider fees for production-grade blockchain access.
+url: https://superrare.com/
+pricing:
+  - name: Marketplace Transaction Fees
+    description: SuperRare charges a percentage fee on primary and secondary sales conducted through the platform. Exact fee percentages are subject to governance and may change via the SuperRare DAO.
+    type: TransactionFee
+    notes: SuperRare historically charged 3% on primary sales and 3% on secondary sales. Fee parameters are governed by RARE token holders via the SuperRare DAO. Check the current terms at https://campaigns.superrare.com/terms for the latest figures.
+    url: https://campaigns.superrare.com/terms
+  - name: Artist Royalties
+    description: Artists receive royalties on secondary sales. The protocol supports configurable royalty percentages enforced at the smart contract level.
+    type: Royalty
+    notes: Royalties are paid to the original creator on each secondary market transaction settled through the Bazaar.
+  - name: Ethereum Gas Fees
+    description: All on-chain operations (minting, listing, bidding, settling auctions, deploying ERC-721 contracts) require Ethereum gas fees paid in ETH. Gas costs vary with network congestion.
+    type: GasFee
+    network: Ethereum Mainnet, Base, Sepolia, Base Sepolia
+    notes: Gas fees are not set by SuperRare; they are determined by Ethereum network conditions at the time of the transaction.
+  - name: RPC Provider Costs
+    description: Production use of the rare-cli and SDK requires a dedicated Ethereum RPC provider. Public endpoints are rate-limited. Providers such as Alchemy and Infura have their own free and paid tiers.
+    type: InfrastructureCost
+    providers:
+      - name: Alchemy
+        url: https://www.alchemy.com/pricing
+      - name: Infura
+        url: https://infura.io/pricing
+    notes: SuperRare documentation recommends using a dedicated RPC provider rather than public endpoints for reliable, production-grade access.
+  - name: API Access
+    description: No paid API subscription tiers are publicly documented by SuperRare. Creator profile API access (rare.xyz) is available to authenticated users at no direct monetary cost beyond platform participation.
+    type: Free
+    notes: No documented paid API tier as of 2026-06-13.
