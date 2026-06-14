@@ -29,7 +29,7 @@ apis:
       - type: Documentation
         url: https://developer.superrare.com/
       - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/openapi.yml
+        url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/openapi/openapi.yml
       - type: Plans
         url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/plans/plans.yml
       - type: RateLimits

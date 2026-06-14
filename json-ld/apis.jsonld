@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "apis": "https://apis.io/vocab/",
+    "sr": "https://superrare.com/vocab/"
+  },
+  "@type": "WebAPI",
+  "@id": "https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/apis.yml",
+  "name": "SuperRare Marketplace API",
+  "description": "REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.",
+  "url": "https://developer.superrare.com/",
+  "provider": {
+    "@type": "Organization",
+    "name": "SuperRare",
+    "url": "https://superrare.com/",
+    "sameAs": [
+      "https://github.com/superrare"
+    ]
+  },
+  "documentation": {
+    "@type": "TechArticle",
+    "url": "https://developer.superrare.com/"
+  },
+  "termsOfService": "https://campaigns.superrare.com/terms",
+  "applicationCategory": "NFT Marketplace",
+  "keywords": [
+    "NFT",
+    "Digital Art",
+    "Marketplace",
+    "Ethereum",
+    "Blockchain",
+    "Auctions",
+    "Collectibles",
+    "ERC-721",
+    "ERC-1155",
+    "IPFS",
+    "Merkle"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://developer.superrare.com/"
+  },
+  "hasPart": [
+    {
+      "@type": "WebAPI",
+      "name": "SuperRare NFTs API",
+      "description": "List, search, and retrieve NFTs with auction, listing, and offer market data.",
+      "url": "https://api.superrare.com/v1/nfts",
+      "documentation": "https://developer.superrare.com/"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "SuperRare Collections API",
+      "description": "List, search, retrieve, and import ERC-721 NFT collections.",
+      "url": "https://api.superrare.com/v1/collections",
+      "documentation": "https://developer.superrare.com/"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "SuperRare Users API",
+      "description": "Retrieve user profiles by Ethereum address.",
+      "url": "https://api.superrare.com/v1/users",
+      "documentation": "https://developer.superrare.com/"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "SuperRare Token Prices API",
+      "description": "Fetch current USD prices for crypto tokens (RARE, ETH, USDC).",
+      "url": "https://api.superrare.com/v1/tokens/price",
+      "documentation": "https://developer.superrare.com/"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "SuperRare Merkle Roots API",
+      "description": "Generate and store NFT and address Merkle roots and proofs for batch marketplace operations.",
+      "url": "https://api.superrare.com/v1/merkle-roots",
+      "documentation": "https://developer.superrare.com/"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "SuperRare Media API",
+      "description": "Upload NFT media assets to IPFS via multipart upload and pin metadata.",
+      "url": "https://api.superrare.com/v1/nfts/metadata",
+      "documentation": "https://developer.superrare.com/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "SuperRare Profile & Creator SDK",
+      "description": "SDK and CLI for managing rare.xyz creator profiles, storefronts, and social features.",
+      "url": "https://github.com/superrare/rare-profile",
+      "applicationCategory": "DeveloperApplication"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "SuperRare Rare Protocol CLI",
+      "description": "CLI for deploying ERC-721/ERC-1155 NFT collections, minting, auctions, offers, and listings on Ethereum, Base, and testnets. Includes MCP server for AI agent integration.",
+      "url": "https://github.com/superrare/rare-cli",
+      "applicationCategory": "DeveloperApplication"
+    }
+  ]
+}
