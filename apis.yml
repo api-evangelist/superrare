@@ -1,6 +1,6 @@
 name: SuperRare
 description: SuperRare is a premier digital art marketplace and auction house built on Ethereum for discovering, collecting, and trading unique single-edition digital artworks as NFTs. The platform provides REST APIs, a profile/creator SDK, smart contract interfaces, and a CLI for accessing artwork metadata, artist profiles, auction data, edition information, and sales history.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -16,7 +16,7 @@ tags:
 apis:
   - name: SuperRare Marketplace API
     description: REST API providing programmatic access to SuperRare artwork metadata, artist profiles, auction data, edition information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.superrare.com/
     baseURL: https://api.superrare.com
     tags:
@@ -42,7 +42,7 @@ apis:
         email: ''
   - name: SuperRare Profile & Creator API
     description: SDK and CLI for programmatic management of rare.xyz creator profiles, storefronts, products, posts, social interactions, messages, analytics, and events. Uses OAuth device flow authentication with scoped personal access tokens.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://github.com/superrare/rare-profile
     baseURL: https://beta.rare.xyz
     tags:
@@ -62,7 +62,7 @@ apis:
         email: ''
   - name: SuperRare Rare Protocol CLI
     description: Command-line interface and SDK for deploying ERC-721 NFT collections, minting tokens, managing reserve-price auctions, and querying tokens and collections on Ethereum Mainnet, Sepolia, Base, and Base Sepolia. Includes Model Context Protocol (MCP) server for AI agent integration.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://github.com/superrare/rare-cli
     baseURL: https://api.superrare.com
     tags:
@@ -83,7 +83,7 @@ apis:
         email: ''
   - name: SuperRare Smart Contracts - The Bazaar
     description: Unified marketplace and auction house smart contract on Ethereum that enables reserve-price auctions, sale price listings, offer placement, and bid management for curated digital art NFTs. Supports non-custodial transactions and the conversion of offers into auction bids.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.superrare.com/smart-contracts/the-bazaar/
     baseURL: https://ethereum.org
     tags:
@@ -103,7 +103,7 @@ apis:
         email: ''
   - name: SuperRare Smart Contracts - Assets (ERC-721)
     description: SuperRare ERC-721 NFT asset contracts including shared minting contracts (SuperRareV1, SuperRareV2), creator-owned Sovereign minting contracts (Series), and curator-managed Space contracts. The Approved Token Registry controls which tokens are supported by the Bazaar marketplace.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.superrare.com/smart-contracts/assets/
     baseURL: https://ethereum.org
     tags:
