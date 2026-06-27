@@ -128,7 +128,7 @@ common:
     url: https://docs.superrare.com/
   - type: HelpCenter
     url: https://help.superrare.com/
-  - type: Forum
+  - type: Forums
     url: https://forum.rare.xyz/
   - type: GitHubOrganization
     url: https://github.com/superrare
@@ -144,9 +144,9 @@ common:
     url: https://docs.superrare.com/whitepapers/master
   - type: TermsOfService
     url: https://campaigns.superrare.com/terms
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/@rareprotocol/rare-cli
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/@rareprotocol/rare-profile
 maintainers:
   - FN: Kin Lane
