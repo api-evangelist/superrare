@@ -122,6 +122,8 @@ apis:
         url: https://developer.superrare.com/
         email: ''
 common:
+  - type: AgenticAccess
+    url: agentic-access/superrare-agentic-access.yml
   - type: DomainSecurity
     url: security/superrare-domain-security.yml
   - type: Portal
