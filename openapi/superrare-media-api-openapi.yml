@@ -1,0 +1,359 @@
+openapi: 3.1.0
+info:
+  title: SuperRare Marketplace Collections Media API
+  description: 'REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
+
+    '
+  version: 1.0.0
+  contact:
+    name: SuperRare Support
+    url: https://help.superrare.com/
+  termsOfService: https://campaigns.superrare.com/terms
+  license:
+    name: SuperRare Terms of Service
+    url: https://campaigns.superrare.com/terms
+servers:
+- url: https://api.superrare.com
+  description: SuperRare Production API
+tags:
+- name: Media
+  description: Upload and process NFT media assets to IPFS
+paths:
+  /v1/nfts/metadata:
+    post:
+      summary: Pin NFT Metadata
+      description: Assemble NFT metadata JSON from media assets and pin to IPFS via Filebase
+      operationId: pinNftMetadata
+      tags:
+      - Media
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNftMetadataRequest'
+      responses:
+        '201':
+          description: Metadata pinned to IPFS
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNftMetadataResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/nfts/metadata/media/uploads:
+    post:
+      summary: Create Media Upload
+      description: 'Initiate a multipart upload to Filebase/IPFS, returning presigned URLs for each part
+
+        '
+      operationId: createMediaUpload
+      tags:
+      - Media
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMediaUploadRequest'
+      responses:
+        '201':
+          description: Multipart upload initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMediaUploadResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/nfts/metadata/media/uploads/complete:
+    post:
+      summary: Complete Media Upload
+      description: Complete a multipart upload, resolve IPFS CID, and return IPFS/gateway URLs
+      operationId: completeMediaUpload
+      tags:
+      - Media
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteMediaUploadRequest'
+      responses:
+        '200':
+          description: Upload completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpfsUploadResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/nfts/metadata/media/generate:
+    post:
+      summary: Generate Media Metadata
+      description: 'Call pipelines to extract media metadata (dimensions, size, type) from a URI
+
+        '
+      operationId: generateMediaMetadata
+      tags:
+      - Media
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateMediaRequest'
+      responses:
+        '200':
+          description: Media metadata generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateMediaResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    GenerateMediaResponse:
+      type: object
+      properties:
+        media:
+          type: object
+          properties:
+            uri:
+              type: string
+            mimeType:
+              type: string
+            size:
+              type: integer
+            dimensions:
+              type: string
+    CreateMediaUploadResponse:
+      type: object
+      properties:
+        uploadId:
+          type: string
+          example: abc123
+        key:
+          type: string
+          example: a1b2c3d4/artwork.png
+        bucket:
+          type: string
+          example: superrare-ipfs
+        partSize:
+          type: integer
+          example: 10000000
+        presignedUrls:
+          type: array
+          items:
+            type: string
+        gatewayBaseUrl:
+          type: string
+          example: https://superrare.myfilebase.com
+    CompleteMediaUploadRequest:
+      type: object
+      required:
+      - key
+      - uploadId
+      - bucket
+      - parts
+      properties:
+        key:
+          type: string
+          example: a1b2c3d4/artwork.png
+        uploadId:
+          type: string
+          example: abc123
+        bucket:
+          type: string
+          example: superrare-ipfs
+        parts:
+          type: array
+          items:
+            type: object
+            properties:
+              ETag:
+                type: string
+              PartNumber:
+                type: integer
+    MediaAsset:
+      type: object
+      required:
+      - url
+      - mimeType
+      - size
+      properties:
+        url:
+          type: string
+          format: uri
+          example: ipfs://QmExample
+        mimeType:
+          type: string
+          example: image/png
+        size:
+          type: integer
+          example: 1024000
+        dimensions:
+          type: object
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+    CreateMediaUploadRequest:
+      type: object
+      required:
+      - fileSize
+      properties:
+        fileSize:
+          type: integer
+          example: 5000000
+        filename:
+          type: string
+          example: artwork.png
+    CreateNftMetadataResponse:
+      type: object
+      properties:
+        cid:
+          type: string
+        ipfsUrl:
+          type: string
+        gatewayUrl:
+          type: string
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            image:
+              type: string
+            media:
+              type: object
+              properties:
+                uri:
+                  type: string
+                mimeType:
+                  type: string
+                size:
+                  type: integer
+                dimensions:
+                  type: string
+            animation_url:
+              type: string
+            tags:
+              type: array
+              items:
+                type: string
+            attributes:
+              type: array
+              items:
+                type: object
+                properties:
+                  trait_type:
+                    type: string
+                  value:
+                    oneOf:
+                    - type: string
+                    - type: number
+                    - type: boolean
+                  display_type:
+                    type: string
+    GenerateMediaRequest:
+      type: object
+      required:
+      - uri
+      - mimeType
+      properties:
+        uri:
+          type: string
+          example: ipfs://QmMediaCid
+        mimeType:
+          type: string
+          example: image/png
+    IpfsUploadResponse:
+      type: object
+      properties:
+        cid:
+          type: string
+          example: QmExampleCid
+        ipfsUrl:
+          type: string
+          example: ipfs://QmExampleCid
+        gatewayUrl:
+          type: string
+          example: https://superrare.myfilebase.com/ipfs/QmExampleCid
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    NftMediaInput:
+      type: object
+      required:
+      - image
+      properties:
+        image:
+          $ref: '#/components/schemas/MediaAsset'
+        video:
+          $ref: '#/components/schemas/MediaAsset'
+        threeD:
+          $ref: '#/components/schemas/MediaAsset'
+        html:
+          $ref: '#/components/schemas/MediaAsset'
+    CreateNftMetadataRequest:
+      type: object
+      required:
+      - name
+      - description
+      - tags
+      - nftMedia
+      properties:
+        name:
+          type: string
+          example: My NFT
+        description:
+          type: string
+          example: A beautiful artwork
+        tags:
+          type: array
+          items:
+            type: string
+          example:
+          - art
+          - digital
+        attributes:
+          type: array
+          items:
+            type: object
+            properties:
+              trait_type:
+                type: string
+              value:
+                oneOf:
+                - type: string
+                - type: number
+                - type: boolean
+              display_type:
+                type: string
+        nftMedia:
+          $ref: '#/components/schemas/NftMediaInput'
+externalDocs:
+  description: SuperRare Developer Documentation
+  url: https://developer.superrare.com/

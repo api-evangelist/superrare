@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: SuperRare Marketplace Collections Users API
+  description: 'REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
+
+    '
+  version: 1.0.0
+  contact:
+    name: SuperRare Support
+    url: https://help.superrare.com/
+  termsOfService: https://campaigns.superrare.com/terms
+  license:
+    name: SuperRare Terms of Service
+    url: https://campaigns.superrare.com/terms
+servers:
+- url: https://api.superrare.com
+  description: SuperRare Production API
+tags:
+- name: Users
+  description: Retrieve user profile information
+paths:
+  /v1/users/{address}:
+    get:
+      summary: Get user
+      description: Get a user profile by Ethereum address
+      operationId: getUser
+      tags:
+      - Users
+      parameters:
+      - name: address
+        in: path
+        required: true
+        description: Checksummed Ethereum address
+        schema:
+          $ref: '#/components/schemas/EthereumAddress'
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserProfile'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+        username:
+          type: string
+          example: satoshi
+        fullName:
+          type: string
+          nullable: true
+          example: Satoshi Nakamoto
+        stats:
+          type: object
+          properties:
+            created:
+              type: integer
+              example: 42
+            owned:
+              type: integer
+              example: 15
+            followerCount:
+              type: integer
+              example: 1000
+            isCollector:
+              type: boolean
+              example: true
+            isCreator:
+              type: boolean
+              example: true
+    EthereumAddress:
+      type: string
+      description: Checksummed Ethereum address
+      pattern: ^0x[0-9a-fA-F]{40}$
+      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+externalDocs:
+  description: SuperRare Developer Documentation
+  url: https://developer.superrare.com/

@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: SuperRare Marketplace Collections Tokens API
+  description: 'REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
+
+    '
+  version: 1.0.0
+  contact:
+    name: SuperRare Support
+    url: https://help.superrare.com/
+  termsOfService: https://campaigns.superrare.com/terms
+  license:
+    name: SuperRare Terms of Service
+    url: https://campaigns.superrare.com/terms
+servers:
+- url: https://api.superrare.com
+  description: SuperRare Production API
+tags:
+- name: Tokens
+  description: Retrieve token price data
+paths:
+  /v1/tokens/price/{symbol}:
+    get:
+      summary: Get Token Price
+      description: Fetch the current USD price for a token by symbol (e.g., rare, eth, usdc)
+      operationId: getTokenPrice
+      tags:
+      - Tokens
+      parameters:
+      - name: symbol
+        in: path
+        required: true
+        description: Token symbol (case-insensitive)
+        schema:
+          $ref: '#/components/schemas/TokenSymbol'
+      responses:
+        '200':
+          description: Token price
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenPriceResponse'
+        '404':
+          description: Token not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    TokenPriceResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            symbol:
+              type: string
+            priceUsd:
+              type: number
+            decimals:
+              type: integer
+            chainId:
+              type: integer
+            address:
+              type: string
+    TokenSymbol:
+      type: string
+      description: Token symbol (case-insensitive)
+      example: rare
+externalDocs:
+  description: SuperRare Developer Documentation
+  url: https://developer.superrare.com/

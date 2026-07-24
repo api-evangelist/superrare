@@ -1,0 +1,602 @@
+openapi: 3.1.0
+info:
+  title: SuperRare Marketplace Collections API
+  description: 'REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
+
+    '
+  version: 1.0.0
+  contact:
+    name: SuperRare Support
+    url: https://help.superrare.com/
+  termsOfService: https://campaigns.superrare.com/terms
+  license:
+    name: SuperRare Terms of Service
+    url: https://campaigns.superrare.com/terms
+servers:
+- url: https://api.superrare.com
+  description: SuperRare Production API
+tags:
+- name: Collections
+  description: List, retrieve, and import NFT collections
+paths:
+  /v1/collections:
+    get:
+      summary: List collections
+      description: Search, filter, and list NFT collections
+      operationId: listCollections
+      tags:
+      - Collections
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: perPage
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - name: q
+        in: query
+        description: Full-text search query
+        schema:
+          type: string
+      - name: ownerAddress
+        in: query
+        description: Checksummed Ethereum address of the collection owner
+        schema:
+          $ref: '#/components/schemas/EthereumAddress'
+      - name: chainId
+        in: query
+        description: Supported blockchain network id
+        schema:
+          $ref: '#/components/schemas/ChainId'
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - newest
+          - oldest
+      responses:
+        '200':
+          description: List of collections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Collection'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+  /v1/collections/{id}:
+    get:
+      summary: Get collection
+      description: Get a single collection by ID
+      operationId: getCollection
+      tags:
+      - Collections
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Collection'
+        '404':
+          description: Collection not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/collections/{id}/events:
+    get:
+      summary: List collection events
+      description: Get events across all NFTs in a collection
+      operationId: listCollectionEvents
+      tags:
+      - Collections
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: perPage
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - name: eventType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - CANCEL_AUCTION
+            - CANCEL_OFFER
+            - CLOSE_AUCTION
+            - CREATE_NFT
+            - CREATE_NFT_SUPPLY
+            - CREATE_RESERVE_AUCTION
+            - CREATE_SCHEDULED_AUCTION
+            - END_AUCTION
+            - MAKE_AUCTION_BID
+            - MAKE_LISTING
+            - MAKE_OFFER
+            - SETTLE_AUCTION
+            - START_AUCTION
+            - TAKE_LISTING
+            - TAKE_OFFER
+            - TRANSFER_NFT
+            - TRANSFER_NFT_SUPPLY
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - newest
+          - oldest
+      responses:
+        '200':
+          description: List of collection events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NftEvent'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+  /v1/collections/import:
+    post:
+      summary: Import ERC-721 Collection
+      description: 'Validate an ERC-721 contract on-chain and register it for indexing via pipelines
+
+        '
+      operationId: importCollection
+      tags:
+      - Collections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportCollectionRequest'
+      responses:
+        '200':
+          description: Collection imported or already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportCollectionResponse'
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Collection already indexed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  collectionId:
+                    type: string
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+        username:
+          type: string
+          nullable: true
+          example: satoshi
+        avatar:
+          type: string
+          nullable: true
+          example: https://example.com/avatar.png
+        fullName:
+          type: string
+          nullable: true
+          example: Satoshi Nakamoto
+    Currency:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        symbol:
+          type: string
+          example: ETH
+        decimals:
+          type: integer
+          example: 18
+        chainId:
+          type: integer
+          example: 1
+    ListingEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - MAKE_LISTING
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        targetBuyer:
+          $ref: '#/components/schemas/User'
+    ImportCollectionResponse:
+      type: object
+      properties:
+        imported:
+          type: boolean
+        collection:
+          type: object
+          properties:
+            name:
+              type: string
+            symbol:
+              type: string
+    AuctionLifecycleEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - CREATE_RESERVE_AUCTION
+          - CREATE_SCHEDULED_AUCTION
+          - START_AUCTION
+          - END_AUCTION
+          - CANCEL_AUCTION
+          - CLOSE_AUCTION
+        seller:
+          $ref: '#/components/schemas/User'
+        buyer:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        minimumBid:
+          $ref: '#/components/schemas/CryptoValue'
+        startTime:
+          type: string
+          nullable: true
+          example: '2024-01-01T00:00:00.000Z'
+    NftEvent:
+      oneOf:
+      - $ref: '#/components/schemas/SaleEvent'
+      - $ref: '#/components/schemas/TransferEvent'
+      - $ref: '#/components/schemas/CreationEvent'
+      - $ref: '#/components/schemas/ListingEvent'
+      - $ref: '#/components/schemas/OfferEvent'
+      - $ref: '#/components/schemas/AuctionBidEvent'
+      - $ref: '#/components/schemas/AuctionLifecycleEvent'
+      discriminator:
+        propertyName: eventType
+    Collection:
+      type: object
+      properties:
+        collectionId:
+          type: string
+          example: col_123
+        name:
+          type: string
+          nullable: true
+          example: SuperRare Genesis
+        description:
+          type: string
+          nullable: true
+          example: The original SuperRare collection
+        symbol:
+          type: string
+          nullable: true
+          example: SUPR
+        bannerImage:
+          type: string
+          nullable: true
+          example: https://example.com/banner.png
+        previewImage:
+          type: string
+          nullable: true
+          example: https://example.com/preview.png
+        owner:
+          $ref: '#/components/schemas/User'
+        stats:
+          type: object
+          properties:
+            tokenCount:
+              type: integer
+              example: 1000
+            collectorCount:
+              type: integer
+              example: 250
+            floorPriceUsd:
+              type: number
+              nullable: true
+              example: 500
+            topOfferUsd:
+              type: number
+              nullable: true
+              example: 10000
+            saleVolumeUsd:
+              type: number
+              nullable: true
+              example: 5000000
+        attributes:
+          type: array
+          items:
+            type: string
+          example:
+          - Background
+          - Eyes
+          - Mouth
+        chainIds:
+          type: array
+          items:
+            type: integer
+          example:
+          - 1
+        createdAt:
+          type: integer
+          example: 1704067200
+    OfferEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - MAKE_OFFER
+          - CANCEL_OFFER
+        buyer:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        perPage:
+          type: integer
+          example: 20
+        totalCount:
+          type: integer
+          example: 100
+        totalPages:
+          type: integer
+          example: 5
+    ImportCollectionRequest:
+      type: object
+      required:
+      - chainId
+      - contractAddress
+      - ownerAddress
+      properties:
+        chainId:
+          $ref: '#/components/schemas/ChainId'
+        contractAddress:
+          $ref: '#/components/schemas/EthereumAddress'
+        ownerAddress:
+          $ref: '#/components/schemas/EthereumAddress'
+    TransferEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - TRANSFER_NFT
+          - TRANSFER_NFT_SUPPLY
+        from:
+          $ref: '#/components/schemas/User'
+        to:
+          $ref: '#/components/schemas/User'
+        amount:
+          type: string
+          example: '1'
+    ChainId:
+      type: integer
+      description: Supported blockchain network id
+      example: 1
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    CreationEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - CREATE_NFT
+          - CREATE_NFT_SUPPLY
+        creator:
+          $ref: '#/components/schemas/User'
+        amount:
+          type: string
+          example: '100'
+    AuctionBidEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - MAKE_AUCTION_BID
+        bidder:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        previousBidder:
+          $ref: '#/components/schemas/User'
+        extendsAuction:
+          type: boolean
+          example: false
+    CryptoValue:
+      type: object
+      properties:
+        cryptoAmount:
+          type: string
+          example: '1000000000000000000'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        usdAmount:
+          type: number
+          nullable: true
+          example: 3500
+    EthereumAddress:
+      type: string
+      description: Checksummed Ethereum address
+      pattern: ^0x[0-9a-fA-F]{40}$
+      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+    SaleEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - SETTLE_AUCTION
+          - TAKE_LISTING
+          - TAKE_OFFER
+        buyer:
+          $ref: '#/components/schemas/User'
+        seller:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+externalDocs:
+  description: SuperRare Developer Documentation
+  url: https://developer.superrare.com/

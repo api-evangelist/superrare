@@ -1,0 +1,334 @@
+openapi: 3.1.0
+info:
+  title: SuperRare Marketplace Collections Merkle Roots API
+  description: 'REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
+
+    '
+  version: 1.0.0
+  contact:
+    name: SuperRare Support
+    url: https://help.superrare.com/
+  termsOfService: https://campaigns.superrare.com/terms
+  license:
+    name: SuperRare Terms of Service
+    url: https://campaigns.superrare.com/terms
+servers:
+- url: https://api.superrare.com
+  description: SuperRare Production API
+tags:
+- name: Merkle Roots
+  description: Generate and manage Merkle roots and proofs for batch operations
+paths:
+  /v1/merkle-roots/nfts:
+    post:
+      summary: Generate NFT Merkle Root
+      description: Generate and store an NFT merkle root via the pipelines service
+      operationId: generateNftMerkleRoot
+      tags:
+      - Merkle Roots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateNftMerkleRootRequest'
+      responses:
+        '200':
+          description: NFT merkle root generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateNftMerkleRootResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Pipelines request failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/merkle-roots/addresses:
+    post:
+      summary: Generate Address Merkle Root
+      description: Generate and store an address merkle root via the pipelines service
+      operationId: generateAddressMerkleRoot
+      tags:
+      - Merkle Roots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/GenerateAddressMerkleRootJsonRequest'
+            examples:
+              json:
+                summary: JSON request with address list
+                value:
+                  addresses:
+                  - '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+                  storageTarget: both
+      responses:
+        '200':
+          description: Address merkle root generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateAddressMerkleRootResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Pipelines request failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/merkle-roots/nfts/proof:
+    post:
+      summary: Generate NFT Merkle Proof
+      description: 'Resolve an NFT Merkle root and generate a token proof from the stored Merkle list
+
+        '
+      operationId: generateNftMerkleProof
+      tags:
+      - Merkle Roots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateNftMerkleProofRequest'
+      responses:
+        '200':
+          description: NFT Merkle proof generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateNftMerkleProofResponse'
+        '404':
+          description: Merkle root or NFT entry not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Multiple matching roots were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/merkle-roots/addresses/proof:
+    post:
+      summary: Generate Address Merkle Proof
+      description: Generate an address proof from a stored Merkle root list
+      operationId: generateAddressMerkleProof
+      tags:
+      - Merkle Roots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateAddressMerkleProofRequest'
+      responses:
+        '200':
+          description: Address Merkle proof generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateAddressMerkleProofResponse'
+        '404':
+          description: Merkle root or address entry not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Multiple matching roots were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    GenerateNftMerkleRootRequest:
+      type: object
+      required:
+      - nfts
+      properties:
+        nfts:
+          type: array
+          items:
+            type: object
+            required:
+            - contractAddress
+            - tokenId
+            properties:
+              contractAddress:
+                $ref: '#/components/schemas/EthereumAddress'
+              tokenId:
+                oneOf:
+                - type: string
+                - type: integer
+                example: '12345'
+    GenerateNftMerkleProofResponse:
+      type: object
+      properties:
+        root:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        contractAddress:
+          type: string
+          example: '0x8Db4B93Fa258E1c265d46f861ae9EbDE0B938670'
+        tokenId:
+          type: string
+          example: '12345'
+        leaf:
+          type: string
+          example: '0x83a68bd27e04afae4b40e8647019086ae8b4915bb243a4cf186f6271e1e65341'
+        proof:
+          type: array
+          items:
+            type: string
+    GenerateAddressMerkleRootJsonRequest:
+      type: object
+      required:
+      - addresses
+      properties:
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EthereumAddress'
+        storageTarget:
+          $ref: '#/components/schemas/MerkleRootStorageTarget'
+    GenerateAddressMerkleProofResponse:
+      type: object
+      properties:
+        root:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        address:
+          type: string
+          example: '0x8Db4B93Fa258E1c265d46f861ae9EbDE0B938670'
+        leaf:
+          type: string
+          example: '0x83a68bd27e04afae4b40e8647019086ae8b4915bb243a4cf186f6271e1e65341'
+        proof:
+          type: array
+          items:
+            type: string
+    GenerateNftMerkleProofRequest:
+      type: object
+      required:
+      - chainId
+      - contractAddress
+      - tokenId
+      properties:
+        chainId:
+          type: integer
+          example: 1
+        contractAddress:
+          $ref: '#/components/schemas/EthereumAddress'
+        tokenId:
+          oneOf:
+          - type: string
+          - type: integer
+          example: '12345'
+        root:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        context:
+          $ref: '#/components/schemas/NftMerkleProofContext'
+        creator:
+          $ref: '#/components/schemas/EthereumAddress'
+    MerkleRootStorageTarget:
+      type: string
+      description: Storage destination for address merkle roots
+      enum:
+      - batch-listing
+      - collection-allowlist
+      - both
+      default: both
+      example: both
+    NftMerkleProofContext:
+      type: string
+      description: Market state context used when resolving a root from Typesense
+      enum:
+      - batch-listing
+      - batch-auction
+      - batch-offer
+      example: batch-listing
+    MerkleRootProofStorageTarget:
+      type: string
+      description: Storage source for address merkle proof generation
+      enum:
+      - batch-listing
+      - collection-allowlist
+      default: collection-allowlist
+      example: collection-allowlist
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    GenerateAddressMerkleRootResponse:
+      type: object
+      properties:
+        merkleRoot:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              storageTarget:
+                type: string
+                enum:
+                - batch-listing
+                - collection-allowlist
+              bucket:
+                type: string
+              key:
+                type: string
+              publicUrl:
+                type: string
+                format: uri
+    GenerateNftMerkleRootResponse:
+      type: object
+      properties:
+        merkleRoot:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        key:
+          type: string
+          example: 0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13.json
+    EthereumAddress:
+      type: string
+      description: Checksummed Ethereum address
+      pattern: ^0x[0-9a-fA-F]{40}$
+      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+    GenerateAddressMerkleProofRequest:
+      type: object
+      required:
+      - root
+      - address
+      properties:
+        root:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        address:
+          $ref: '#/components/schemas/EthereumAddress'
+        storageTarget:
+          $ref: '#/components/schemas/MerkleRootProofStorageTarget'
+externalDocs:
+  description: SuperRare Developer Documentation
+  url: https://developer.superrare.com/
