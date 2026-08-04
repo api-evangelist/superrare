@@ -1,0 +1,24 @@
+{
+  "provider": "superrare",
+  "sources": [
+    "superrare-collections-api-openapi.yml",
+    "superrare-media-api-openapi.yml",
+    "superrare-merkle-roots-api-openapi.yml",
+    "superrare-nfts-api-openapi.yml",
+    "superrare-tokens-api-openapi.yml",
+    "superrare-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "superrare-collections-api-openapi.yml",
+    "superrare-media-api-openapi.yml",
+    "superrare-merkle-roots-api-openapi.yml",
+    "superrare-nfts-api-openapi.yml",
+    "superrare-tokens-api-openapi.yml",
+    "superrare-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
