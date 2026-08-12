@@ -246,6 +246,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/finops/finops.yml
 common:
+  - type: License
+    name: BSD-3-Clause
+    url: https://github.com/superrare/pixura-contracts/blob/master/LICENSE
   - type: AgenticAccess
     url: agentic-access/superrare-agentic-access.yml
   - type: DomainSecurity
