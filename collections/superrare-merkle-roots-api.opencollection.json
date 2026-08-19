@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SuperRare Marketplace Collections Merkle Roots API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merkle Roots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate NFT Merkle Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/merkle-roots/nfts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate and store an NFT merkle root via the pipelines service"
+        },
+        {
+          "info": {
+            "name": "Generate Address Merkle Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/merkle-roots/addresses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate and store an address merkle root via the pipelines service"
+        },
+        {
+          "info": {
+            "name": "Generate NFT Merkle Proof",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/merkle-roots/nfts/proof",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve an NFT Merkle root and generate a token proof from the stored Merkle list\n"
+        },
+        {
+          "info": {
+            "name": "Generate Address Merkle Proof",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/merkle-roots/addresses/proof",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate an address proof from a stored Merkle root list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

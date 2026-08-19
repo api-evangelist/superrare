@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SuperRare Marketplace Collections API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.superrare.com/v1/collections",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query"
+              },
+              {
+                "name": "ownerAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the collection owner"
+              },
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Supported blockchain network id"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search, filter, and list NFT collections"
+        },
+        {
+          "info": {
+            "name": "Get collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.superrare.com/v1/collections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single collection by ID"
+        },
+        {
+          "info": {
+            "name": "List collection events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.superrare.com/v1/collections/:id/events",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get events across all NFTs in a collection"
+        },
+        {
+          "info": {
+            "name": "Import ERC-721 Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/collections/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate an ERC-721 contract on-chain and register it for indexing via pipelines\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

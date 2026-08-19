@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SuperRare Marketplace Collections NFTs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFTs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List NFTs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.superrare.com/v1/nfts",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query"
+              },
+              {
+                "name": "creatorAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the NFT creator"
+              },
+              {
+                "name": "ownerAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the NFT owner"
+              },
+              {
+                "name": "contractAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum contract address"
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Supported blockchain network id"
+              },
+              {
+                "name": "listingType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasAuction",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auctionState",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auctionType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auctionCreatorAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the auction creator"
+              },
+              {
+                "name": "auctionBidderAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the auction bidder"
+              },
+              {
+                "name": "hasListing",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasOffer",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offerBuyerAddress",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the offer buyer"
+              },
+              {
+                "name": "isPrimarySale",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "isSecondarySale",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "priceMin",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "priceMax",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Checksummed Ethereum address of the currency token"
+              },
+              {
+                "name": "mediaType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search, filter, and list NFTs with rich query parameters"
+        },
+        {
+          "info": {
+            "name": "Get NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.superrare.com/v1/nfts/:universalTokenId",
+            "params": [
+              {
+                "name": "universalTokenId",
+                "value": "",
+                "type": "path",
+                "description": "Canonical NFT identifier in chainId-contractAddress-tokenId format"
+              }
+            ]
+          },
+          "docs": "Get a single NFT by its universal token ID"
+        },
+        {
+          "info": {
+            "name": "List NFT events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.superrare.com/v1/nfts/:universalTokenId/events",
+            "params": [
+              {
+                "name": "universalTokenId",
+                "value": "",
+                "type": "path",
+                "description": "Canonical NFT identifier in chainId-contractAddress-tokenId format"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get events for a specific NFT"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

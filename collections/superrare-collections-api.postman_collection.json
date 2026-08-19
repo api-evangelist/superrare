@@ -1,0 +1,622 @@
+{
+  "item": [
+    {
+      "id": "f0baae28-b8f7-4d8e-b39d-764d651d420e",
+      "name": "Collections",
+      "description": {
+        "content": "List, retrieve, and import NFT collections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d063f4b4-c8cb-400d-8536-028f5db63692",
+          "name": "List collections",
+          "request": {
+            "name": "List collections",
+            "description": {
+              "content": "Search, filter, and list NFT collections",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the collection owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<integer>",
+                  "description": "Supported blockchain network id"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd5f94f9-a635-473d-bce0-d93658934cfc",
+              "name": "List of collections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ownerAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"collectionId\": \"col_123\",\n      \"name\": \"SuperRare Genesis\",\n      \"description\": \"The original SuperRare collection\",\n      \"symbol\": \"SUPR\",\n      \"bannerImage\": \"https://example.com/banner.png\",\n      \"previewImage\": \"https://example.com/preview.png\",\n      \"owner\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"stats\": {\n        \"tokenCount\": 1000,\n        \"collectorCount\": 250,\n        \"floorPriceUsd\": 500,\n        \"topOfferUsd\": 10000,\n        \"saleVolumeUsd\": 5000000\n      },\n      \"attributes\": [\n        \"Background\",\n        \"Eyes\",\n        \"Mouth\"\n      ],\n      \"chainIds\": [\n        1\n      ],\n      \"createdAt\": 1704067200\n    },\n    {\n      \"collectionId\": \"col_123\",\n      \"name\": \"SuperRare Genesis\",\n      \"description\": \"The original SuperRare collection\",\n      \"symbol\": \"SUPR\",\n      \"bannerImage\": \"https://example.com/banner.png\",\n      \"previewImage\": \"https://example.com/preview.png\",\n      \"owner\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"stats\": {\n        \"tokenCount\": 1000,\n        \"collectorCount\": 250,\n        \"floorPriceUsd\": 500,\n        \"topOfferUsd\": 10000,\n        \"saleVolumeUsd\": 5000000\n      },\n      \"attributes\": [\n        \"Background\",\n        \"Eyes\",\n        \"Mouth\"\n      ],\n      \"chainIds\": [\n        1\n      ],\n      \"createdAt\": 1704067200\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"perPage\": 20,\n    \"totalCount\": 100,\n    \"totalPages\": 5\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a973ee1b-2891-4475-a11f-3254bce102c9",
+          "name": "Get collection",
+          "request": {
+            "name": "Get collection",
+            "description": {
+              "content": "Get a single collection by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "collections",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f1776f7-6237-4213-8ff9-101e4536c86e",
+              "name": "Collection detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"collectionId\": \"col_123\",\n    \"name\": \"SuperRare Genesis\",\n    \"description\": \"The original SuperRare collection\",\n    \"symbol\": \"SUPR\",\n    \"bannerImage\": \"https://example.com/banner.png\",\n    \"previewImage\": \"https://example.com/preview.png\",\n    \"owner\": {\n      \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"username\": \"satoshi\",\n      \"avatar\": \"https://example.com/avatar.png\",\n      \"fullName\": \"Satoshi Nakamoto\"\n    },\n    \"stats\": {\n      \"tokenCount\": 1000,\n      \"collectorCount\": 250,\n      \"floorPriceUsd\": 500,\n      \"topOfferUsd\": 10000,\n      \"saleVolumeUsd\": 5000000\n    },\n    \"attributes\": [\n      \"Background\",\n      \"Eyes\",\n      \"Mouth\"\n    ],\n    \"chainIds\": [\n      1\n    ],\n    \"createdAt\": 1704067200\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9c1e8b2-21af-4eb4-b600-eafb3588f36b",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25d892bf-2dab-45eb-8e4b-d71775612512",
+          "name": "List collection events",
+          "request": {
+            "name": "List collection events",
+            "description": {
+              "content": "Get events across all NFTs in a collection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "collections",
+                ":id",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc0846b9-621c-4dfb-97b5-b39a396a1e70",
+              "name": "List of collection events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    ":id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"eventId\": \"evt_123\",\n      \"createdAt\": \"2024-01-01T00:00:00.000Z\",\n      \"transactionHash\": \"0xabc123\",\n      \"blockNumber\": 12345678,\n      \"eventType\": \"TAKE_LISTING\",\n      \"buyer\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"seller\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"price\": {\n        \"cryptoAmount\": \"1000000000000000000\",\n        \"currency\": {\n          \"address\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"chainId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"usdAmount\": 3500\n      }\n    },\n    {\n      \"eventId\": \"evt_123\",\n      \"createdAt\": \"2024-01-01T00:00:00.000Z\",\n      \"transactionHash\": \"0xabc123\",\n      \"blockNumber\": 12345678,\n      \"eventType\": \"TAKE_LISTING\",\n      \"buyer\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"seller\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"price\": {\n        \"cryptoAmount\": \"1000000000000000000\",\n        \"currency\": {\n          \"address\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"chainId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"usdAmount\": 3500\n      }\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"perPage\": 20,\n    \"totalCount\": 100,\n    \"totalPages\": 5\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54943f36-fac4-4952-b9b2-7eaedc25d17e",
+          "name": "Import ERC-721 Collection",
+          "request": {
+            "name": "Import ERC-721 Collection",
+            "description": {
+              "content": "Validate an ERC-721 contract on-chain and register it for indexing via pipelines\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "collections",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chainId\": \"<integer>\",\n  \"contractAddress\": \"<string>\",\n  \"ownerAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bf424ae-8200-4f91-abd5-12c59d2b2d21",
+              "name": "Collection imported or already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": 1,\n  \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"ownerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"imported\": false,\n  \"collection\": {\n    \"name\": \"string\",\n    \"symbol\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db495edb-b9d2-4822-a780-6bd250c5afd6",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": 1,\n  \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"ownerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9a55203-a6a0-4930-82c1-d0b0db27f653",
+              "name": "Collection already indexed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": 1,\n  \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"ownerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"collectionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.superrare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fcf16525-71d2-4309-aca3-ef4ffb989c2f",
+    "name": "SuperRare Marketplace Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.\n\n\nContact Support:\n Name: SuperRare Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,623 @@
+{
+  "item": [
+    {
+      "id": "937d1f13-72ff-4e36-a812-4972182e01ee",
+      "name": "NFTs",
+      "description": {
+        "content": "Search, retrieve, and manage NFT tokens and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b06af1b1-d39a-4cd9-be0c-c5eaf2b4936d",
+          "name": "List NFTs",
+          "request": {
+            "name": "List NFTs",
+            "description": {
+              "content": "Search, filter, and list NFTs with rich query parameters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "creatorAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the NFT creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the NFT owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "contractAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum contract address"
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<integer>",
+                  "description": "Supported blockchain network id"
+                },
+                {
+                  "disabled": false,
+                  "key": "listingType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasAuction",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "auctionState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "auctionType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "auctionCreatorAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the auction creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "auctionBidderAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the auction bidder"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasListing",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasOffer",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offerBuyerAddress",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the offer buyer"
+                },
+                {
+                  "disabled": false,
+                  "key": "isPrimarySale",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isSecondarySale",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "priceMin",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "priceMax",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Checksummed Ethereum address of the currency token"
+                },
+                {
+                  "disabled": false,
+                  "key": "mediaType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17396919-fc6e-44a0-ab08-1e3eeb543b44",
+              "name": "List of NFTs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creatorAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "ownerAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "1"
+                    },
+                    {
+                      "key": "listingType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasAuction",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "auctionState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "auctionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "auctionCreatorAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "auctionBidderAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "hasListing",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasOffer",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "offerBuyerAddress",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "isPrimarySale",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "isSecondarySale",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "priceMin",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "priceMax",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "0xba5BDe662c17e2aDFF1075610382B9B691296350"
+                    },
+                    {
+                      "key": "mediaType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"universalTokenId\": \"1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345\",\n      \"contractAddress\": \"0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0\",\n      \"chainId\": \"1\",\n      \"tokenId\": \"12345\",\n      \"type\": \"ERC721\",\n      \"creator\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"owner\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"owners\": [\n        {\n          \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"balance\": \"1\"\n        },\n        {\n          \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"balance\": \"1\"\n        }\n      ],\n      \"metadata\": {\n        \"name\": \"Genesis\",\n        \"description\": \"A unique digital artwork\",\n        \"tags\": [\n          \"art\",\n          \"digital\"\n        ],\n        \"mediaType\": \"image/png\",\n        \"imageUri\": \"https://example.com/image.png\",\n        \"videoUri\": \"string\"\n      },\n      \"market\": {\n        \"listings\": [\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"SALE_PRICE\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"seller\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n            \"allowlist\": {\n              \"root\": \"string\"\n            }\n          },\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"SALE_PRICE\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"seller\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n            \"allowlist\": {\n              \"root\": \"string\"\n            }\n          }\n        ],\n        \"offers\": [\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"OFFER\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyer\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n          },\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"OFFER\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyer\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n          }\n        ],\n        \"auctions\": [\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"RESERVE_AUCTION\",\n            \"state\": \"RUNNING\",\n            \"startTime\": \"2024-01-01T00:00:00.000Z\",\n            \"endTime\": \"2024-01-02T00:00:00.000Z\",\n            \"currencyAddress\": \"0x0000000000000000000000000000000000000000\",\n            \"sellerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"currentBid\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"reservePrice\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"highestBidder\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\"\n          },\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"RESERVE_AUCTION\",\n            \"state\": \"RUNNING\",\n            \"startTime\": \"2024-01-01T00:00:00.000Z\",\n            \"endTime\": \"2024-01-02T00:00:00.000Z\",\n            \"currencyAddress\": \"0x0000000000000000000000000000000000000000\",\n            \"sellerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"currentBid\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"reservePrice\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"highestBidder\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\"\n          }\n        ]\n      },\n      \"lastSale\": {\n        \"eventId\": \"evt_123\",\n        \"price\": {\n          \"cryptoAmount\": \"1000000000000000000\",\n          \"currency\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"symbol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"chainId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"usdAmount\": 3500\n        }\n      },\n      \"attributes\": [\n        {\n          \"property\": \"Background\",\n          \"value\": \"Blue\"\n        },\n        {\n          \"property\": \"Background\",\n          \"value\": \"Blue\"\n        }\n      ],\n      \"createdAt\": 1704067200\n    },\n    {\n      \"universalTokenId\": \"1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345\",\n      \"contractAddress\": \"0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0\",\n      \"chainId\": \"1\",\n      \"tokenId\": \"12345\",\n      \"type\": \"ERC721\",\n      \"creator\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"owner\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"owners\": [\n        {\n          \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"balance\": \"1\"\n        },\n        {\n          \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"balance\": \"1\"\n        }\n      ],\n      \"metadata\": {\n        \"name\": \"Genesis\",\n        \"description\": \"A unique digital artwork\",\n        \"tags\": [\n          \"art\",\n          \"digital\"\n        ],\n        \"mediaType\": \"image/png\",\n        \"imageUri\": \"https://example.com/image.png\",\n        \"videoUri\": \"string\"\n      },\n      \"market\": {\n        \"listings\": [\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"SALE_PRICE\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"seller\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n            \"allowlist\": {\n              \"root\": \"string\"\n            }\n          },\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"SALE_PRICE\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"seller\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n            \"allowlist\": {\n              \"root\": \"string\"\n            }\n          }\n        ],\n        \"offers\": [\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"OFFER\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyer\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n          },\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"OFFER\",\n            \"price\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyer\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"buyerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n          }\n        ],\n        \"auctions\": [\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"RESERVE_AUCTION\",\n            \"state\": \"RUNNING\",\n            \"startTime\": \"2024-01-01T00:00:00.000Z\",\n            \"endTime\": \"2024-01-02T00:00:00.000Z\",\n            \"currencyAddress\": \"0x0000000000000000000000000000000000000000\",\n            \"sellerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"currentBid\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"reservePrice\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"highestBidder\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\"\n          },\n          {\n            \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n            \"type\": \"RESERVE_AUCTION\",\n            \"state\": \"RUNNING\",\n            \"startTime\": \"2024-01-01T00:00:00.000Z\",\n            \"endTime\": \"2024-01-02T00:00:00.000Z\",\n            \"currencyAddress\": \"0x0000000000000000000000000000000000000000\",\n            \"sellerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"currentBid\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"reservePrice\": {\n              \"cryptoAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"usdAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"highestBidder\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"avatar\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fullName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\"\n          }\n        ]\n      },\n      \"lastSale\": {\n        \"eventId\": \"evt_123\",\n        \"price\": {\n          \"cryptoAmount\": \"1000000000000000000\",\n          \"currency\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"symbol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"chainId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"usdAmount\": 3500\n        }\n      },\n      \"attributes\": [\n        {\n          \"property\": \"Background\",\n          \"value\": \"Blue\"\n        },\n        {\n          \"property\": \"Background\",\n          \"value\": \"Blue\"\n        }\n      ],\n      \"createdAt\": 1704067200\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"perPage\": 20,\n    \"totalCount\": 100,\n    \"totalPages\": 5\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c14f6c6f-0f5f-40e8-a19d-5a7b32663443",
+          "name": "Get NFT",
+          "request": {
+            "name": "Get NFT",
+            "description": {
+              "content": "Get a single NFT by its universal token ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts",
+                ":universalTokenId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "universalTokenId",
+                  "description": "(Required) Canonical NFT identifier in chainId-contractAddress-tokenId format"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e6305e4-3e90-4e6b-a7e2-58aa5c6b149e",
+              "name": "NFT detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    ":universalTokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "universalTokenId",
+                      "description": "(Required) Canonical NFT identifier in chainId-contractAddress-tokenId format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"universalTokenId\": \"1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345\",\n    \"contractAddress\": \"0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0\",\n    \"chainId\": \"1\",\n    \"tokenId\": \"12345\",\n    \"type\": \"ERC721\",\n    \"creator\": {\n      \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"username\": \"satoshi\",\n      \"avatar\": \"https://example.com/avatar.png\",\n      \"fullName\": \"Satoshi Nakamoto\"\n    },\n    \"owner\": {\n      \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"username\": \"satoshi\",\n      \"avatar\": \"https://example.com/avatar.png\",\n      \"fullName\": \"Satoshi Nakamoto\"\n    },\n    \"owners\": [\n      {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"balance\": \"1\"\n      },\n      {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"balance\": \"1\"\n      }\n    ],\n    \"metadata\": {\n      \"name\": \"Genesis\",\n      \"description\": \"A unique digital artwork\",\n      \"tags\": [\n        \"art\",\n        \"digital\"\n      ],\n      \"mediaType\": \"image/png\",\n      \"imageUri\": \"https://example.com/image.png\",\n      \"videoUri\": \"string\"\n    },\n    \"market\": {\n      \"listings\": [\n        {\n          \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n          \"type\": \"SALE_PRICE\",\n          \"price\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"seller\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n          \"allowlist\": {\n            \"root\": \"string\"\n          }\n        },\n        {\n          \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n          \"type\": \"SALE_PRICE\",\n          \"price\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"seller\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n          \"allowlist\": {\n            \"root\": \"string\"\n          }\n        }\n      ],\n      \"offers\": [\n        {\n          \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n          \"type\": \"OFFER\",\n          \"price\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"buyer\": {\n            \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"username\": \"satoshi\",\n            \"avatar\": \"https://example.com/avatar.png\",\n            \"fullName\": \"Satoshi Nakamoto\"\n          },\n          \"buyerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n        },\n        {\n          \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n          \"type\": \"OFFER\",\n          \"price\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"buyer\": {\n            \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"username\": \"satoshi\",\n            \"avatar\": \"https://example.com/avatar.png\",\n            \"fullName\": \"Satoshi Nakamoto\"\n          },\n          \"buyerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n        }\n      ],\n      \"auctions\": [\n        {\n          \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n          \"type\": \"RESERVE_AUCTION\",\n          \"state\": \"RUNNING\",\n          \"startTime\": \"2024-01-01T00:00:00.000Z\",\n          \"endTime\": \"2024-01-02T00:00:00.000Z\",\n          \"currencyAddress\": \"0x0000000000000000000000000000000000000000\",\n          \"sellerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"currentBid\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"reservePrice\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"highestBidder\": {\n            \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"username\": \"satoshi\",\n            \"avatar\": \"https://example.com/avatar.png\",\n            \"fullName\": \"Satoshi Nakamoto\"\n          },\n          \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\"\n        },\n        {\n          \"contractAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n          \"type\": \"RESERVE_AUCTION\",\n          \"state\": \"RUNNING\",\n          \"startTime\": \"2024-01-01T00:00:00.000Z\",\n          \"endTime\": \"2024-01-02T00:00:00.000Z\",\n          \"currencyAddress\": \"0x0000000000000000000000000000000000000000\",\n          \"sellerAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n          \"currentBid\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"reservePrice\": {\n            \"cryptoAmount\": \"1000000000000000000\",\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"usdAmount\": 3500\n          },\n          \"highestBidder\": {\n            \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n            \"username\": \"satoshi\",\n            \"avatar\": \"https://example.com/avatar.png\",\n            \"fullName\": \"Satoshi Nakamoto\"\n          },\n          \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\"\n        }\n      ]\n    },\n    \"lastSale\": {\n      \"eventId\": \"evt_123\",\n      \"price\": {\n        \"cryptoAmount\": \"1000000000000000000\",\n        \"currency\": {\n          \"address\": \"0x0000000000000000000000000000000000000000\",\n          \"symbol\": \"ETH\",\n          \"decimals\": 18,\n          \"chainId\": 1\n        },\n        \"usdAmount\": 3500\n      }\n    },\n    \"attributes\": [\n      {\n        \"property\": \"Background\",\n        \"value\": \"Blue\"\n      },\n      {\n        \"property\": \"Background\",\n        \"value\": \"Blue\"\n      }\n    ],\n    \"createdAt\": 1704067200\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0327a53-6a0d-49e0-9674-2acac3f9e840",
+              "name": "NFT not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    ":universalTokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "universalTokenId",
+                      "description": "(Required) Canonical NFT identifier in chainId-contractAddress-tokenId format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01f3be94-c60d-46b7-b34e-9ef30879b66a",
+          "name": "List NFT events",
+          "request": {
+            "name": "List NFT events",
+            "description": {
+              "content": "Get events for a specific NFT",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts",
+                ":universalTokenId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "universalTokenId",
+                  "description": "(Required) Canonical NFT identifier in chainId-contractAddress-tokenId format"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34f087b7-d7ec-4dad-ada2-6ff100c7044a",
+              "name": "List of NFT events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    ":universalTokenId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "universalTokenId",
+                      "description": "(Required) Canonical NFT identifier in chainId-contractAddress-tokenId format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"eventId\": \"evt_123\",\n      \"createdAt\": \"2024-01-01T00:00:00.000Z\",\n      \"transactionHash\": \"0xabc123\",\n      \"blockNumber\": 12345678,\n      \"eventType\": \"TAKE_OFFER\",\n      \"buyer\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"seller\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"price\": {\n        \"cryptoAmount\": \"1000000000000000000\",\n        \"currency\": {\n          \"address\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"chainId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"usdAmount\": 3500\n      }\n    },\n    {\n      \"eventId\": \"evt_123\",\n      \"createdAt\": \"2024-01-01T00:00:00.000Z\",\n      \"transactionHash\": \"0xabc123\",\n      \"blockNumber\": 12345678,\n      \"eventType\": \"TAKE_LISTING\",\n      \"buyer\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"seller\": {\n        \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n        \"username\": \"satoshi\",\n        \"avatar\": \"https://example.com/avatar.png\",\n        \"fullName\": \"Satoshi Nakamoto\"\n      },\n      \"price\": {\n        \"cryptoAmount\": \"1000000000000000000\",\n        \"currency\": {\n          \"address\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"chainId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"usdAmount\": 3500\n      }\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"perPage\": 20,\n    \"totalCount\": 100,\n    \"totalPages\": 5\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.superrare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c7df6e0c-63a7-4229-b6d8-0d069b5fb948",
+    "name": "SuperRare Marketplace Collections NFTs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.\n\n\nContact Support:\n Name: SuperRare Support",
+      "type": "text/plain"
+    }
+  }
+}

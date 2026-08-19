@@ -1,0 +1,780 @@
+{
+  "item": [
+    {
+      "id": "694dec43-e5f6-4939-842b-59728c128851",
+      "name": "Merkle Roots",
+      "description": {
+        "content": "Generate and manage Merkle roots and proofs for batch operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04f29cbf-00ed-489e-ab9a-317ab0ca9950",
+          "name": "Generate NFT Merkle Root",
+          "request": {
+            "name": "Generate NFT Merkle Root",
+            "description": {
+              "content": "Generate and store an NFT merkle root via the pipelines service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merkle-roots",
+                "nfts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nfts\": [\n    {\n      \"contractAddress\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"contractAddress\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93bb8cb4-7501-4133-b770-0732d7876979",
+              "name": "NFT merkle root generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "nfts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nfts\": [\n    {\n      \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"tokenId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"key\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13.json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54a1be33-1f5f-40b5-baca-d06be09f337d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "nfts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nfts\": [\n    {\n      \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"tokenId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ced3d7d-0787-472a-a5da-00c3080cf8d4",
+              "name": "Pipelines request failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "nfts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nfts\": [\n    {\n      \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n      \"tokenId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44e3fbe0-1f59-4c35-99bf-f741c3457a4d",
+          "name": "Generate Address Merkle Root",
+          "request": {
+            "name": "Generate Address Merkle Root",
+            "description": {
+              "content": "Generate and store an address merkle root via the pipelines service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merkle-roots",
+                "addresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"storageTarget\": \"both\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab797aa6-0f16-4775-92ac-9f698c6866dc",
+              "name": "Address merkle root generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n  ],\n  \"storageTarget\": \"both\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merkleRoot\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"locations\": [\n    {\n      \"storageTarget\": \"collection-allowlist\",\n      \"bucket\": \"string\",\n      \"key\": \"string\",\n      \"publicUrl\": \"http://jWgpdjAUGZkRqluxfzWcJYrj.ykISCmfaUmQW2N,zH2Yf9uaZJ6Txes-LLS2dtYyGJsPNbK15fMzzyijToVYbPp2LZZfL.AS\"\n    },\n    {\n      \"storageTarget\": \"batch-listing\",\n      \"bucket\": \"string\",\n      \"key\": \"string\",\n      \"publicUrl\": \"https://gcYMf.pxwbhiIX\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c57cdb44-f7b0-476f-afb3-4dd312e745bb",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n  ],\n  \"storageTarget\": \"both\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97cd39ee-10c5-440e-ad24-86b812efdc02",
+              "name": "Pipelines request failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n  ],\n  \"storageTarget\": \"both\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3b766a9-d7a8-41c4-9648-0d23938415e2",
+          "name": "Generate NFT Merkle Proof",
+          "request": {
+            "name": "Generate NFT Merkle Proof",
+            "description": {
+              "content": "Resolve an NFT Merkle root and generate a token proof from the stored Merkle list\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merkle-roots",
+                "nfts",
+                "proof"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chainId\": \"<integer>\",\n  \"contractAddress\": \"<string>\",\n  \"tokenId\": \"<string>\",\n  \"root\": \"<string>\",\n  \"context\": \"<string>\",\n  \"creator\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ef4e1b6-fa74-4678-b4d2-8a9804c2233f",
+              "name": "NFT Merkle proof generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "nfts",
+                    "proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": 1,\n  \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"tokenId\": \"<string>\",\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"context\": \"batch-listing\",\n  \"creator\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"contractAddress\": \"0x8Db4B93Fa258E1c265d46f861ae9EbDE0B938670\",\n  \"tokenId\": \"12345\",\n  \"leaf\": \"0x83a68bd27e04afae4b40e8647019086ae8b4915bb243a4cf186f6271e1e65341\",\n  \"proof\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10647398-10aa-444e-bebe-53808d5558bf",
+              "name": "Merkle root or NFT entry not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "nfts",
+                    "proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": 1,\n  \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"tokenId\": \"<string>\",\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"context\": \"batch-listing\",\n  \"creator\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0890da4-1c3a-4ae7-83f5-a906e43261fe",
+              "name": "Multiple matching roots were found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "nfts",
+                    "proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": 1,\n  \"contractAddress\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"tokenId\": \"<string>\",\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"context\": \"batch-listing\",\n  \"creator\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e8d7b2a-3317-450a-82bc-f590e5b7be4e",
+          "name": "Generate Address Merkle Proof",
+          "request": {
+            "name": "Generate Address Merkle Proof",
+            "description": {
+              "content": "Generate an address proof from a stored Merkle root list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merkle-roots",
+                "addresses",
+                "proof"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"root\": \"<string>\",\n  \"address\": \"<string>\",\n  \"storageTarget\": \"collection-allowlist\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb5ec5b2-1c0a-4cf5-af71-1c070f375abd",
+              "name": "Address Merkle proof generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "addresses",
+                    "proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"storageTarget\": \"collection-allowlist\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"address\": \"0x8Db4B93Fa258E1c265d46f861ae9EbDE0B938670\",\n  \"leaf\": \"0x83a68bd27e04afae4b40e8647019086ae8b4915bb243a4cf186f6271e1e65341\",\n  \"proof\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e32f96d-8720-4e1f-a441-6c7e217ed747",
+              "name": "Merkle root or address entry not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "addresses",
+                    "proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"storageTarget\": \"collection-allowlist\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "079860c6-4560-40cd-8005-0d4f6fe2d91a",
+              "name": "Multiple matching roots were found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merkle-roots",
+                    "addresses",
+                    "proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"root\": \"0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13\",\n  \"address\": \"0xba5BDe662c17e2aDFF1075610382B9B691296350\",\n  \"storageTarget\": \"collection-allowlist\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.superrare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "74e153d5-6683-4936-92ee-1703b43557ea",
+    "name": "SuperRare Marketplace Collections Merkle Roots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.\n\n\nContact Support:\n Name: SuperRare Support",
+      "type": "text/plain"
+    }
+  }
+}

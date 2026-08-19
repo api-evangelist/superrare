@@ -1,0 +1,613 @@
+{
+  "item": [
+    {
+      "id": "a4fd96ff-3bbd-47a5-b1b8-82b4612bb675",
+      "name": "Media",
+      "description": {
+        "content": "Upload and process NFT media assets to IPFS",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ebdeb03e-762d-4149-b049-9672e10e63b3",
+          "name": "Pin NFT Metadata",
+          "request": {
+            "name": "Pin NFT Metadata",
+            "description": {
+              "content": "Assemble NFT metadata JSON from media assets and pin to IPFS via Filebase",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nftMedia\": {\n    \"image\": {\n      \"url\": \"<uri>\",\n      \"mimeType\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"dimensions\": {\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    \"video\": {\n      \"url\": \"<uri>\",\n      \"mimeType\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"dimensions\": {\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    \"threeD\": {\n      \"url\": \"<uri>\",\n      \"mimeType\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"dimensions\": {\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    \"html\": {\n      \"url\": \"<uri>\",\n      \"mimeType\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"dimensions\": {\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    }\n  },\n  \"attributes\": [\n    {\n      \"trait_type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"display_type\": \"<string>\"\n    },\n    {\n      \"trait_type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"display_type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb82f08d-e1f9-4628-8d80-c3e7fbf11aae",
+              "name": "Metadata pinned to IPFS",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My NFT\",\n  \"description\": \"A beautiful artwork\",\n  \"tags\": [\n    \"art\",\n    \"digital\"\n  ],\n  \"nftMedia\": {\n    \"image\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 9504,\n        \"height\": 9494\n      }\n    },\n    \"video\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 6207,\n        \"height\": 5162\n      }\n    },\n    \"threeD\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 6619,\n        \"height\": 9394\n      }\n    },\n    \"html\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 8573,\n        \"height\": 1602\n      }\n    }\n  },\n  \"attributes\": [\n    {\n      \"trait_type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"display_type\": \"<string>\"\n    },\n    {\n      \"trait_type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"display_type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cid\": \"string\",\n  \"ipfsUrl\": \"string\",\n  \"gatewayUrl\": \"string\",\n  \"metadata\": {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"image\": \"string\",\n    \"media\": {\n      \"uri\": \"string\",\n      \"mimeType\": \"string\",\n      \"size\": 9489,\n      \"dimensions\": \"string\"\n    },\n    \"animation_url\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"attributes\": [\n      {\n        \"trait_type\": \"string\",\n        \"value\": \"string\",\n        \"display_type\": \"string\"\n      },\n      {\n        \"trait_type\": \"string\",\n        \"value\": \"string\",\n        \"display_type\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "459610a3-adde-4dc8-a3e9-381618edea15",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My NFT\",\n  \"description\": \"A beautiful artwork\",\n  \"tags\": [\n    \"art\",\n    \"digital\"\n  ],\n  \"nftMedia\": {\n    \"image\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 9504,\n        \"height\": 9494\n      }\n    },\n    \"video\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 6207,\n        \"height\": 5162\n      }\n    },\n    \"threeD\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 6619,\n        \"height\": 9394\n      }\n    },\n    \"html\": {\n      \"url\": \"ipfs://QmExample\",\n      \"mimeType\": \"image/png\",\n      \"size\": 1024000,\n      \"dimensions\": {\n        \"width\": 8573,\n        \"height\": 1602\n      }\n    }\n  },\n  \"attributes\": [\n    {\n      \"trait_type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"display_type\": \"<string>\"\n    },\n    {\n      \"trait_type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"display_type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d888d76d-7f0e-4bfc-be2e-6dbb8751ef48",
+          "name": "Create Media Upload",
+          "request": {
+            "name": "Create Media Upload",
+            "description": {
+              "content": "Initiate a multipart upload to Filebase/IPFS, returning presigned URLs for each part\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts",
+                "metadata",
+                "media",
+                "uploads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileSize\": \"<integer>\",\n  \"filename\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ff8c5b8-895e-4ca4-aab2-e38a60ef0dbd",
+              "name": "Multipart upload initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata",
+                    "media",
+                    "uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileSize\": 5000000,\n  \"filename\": \"artwork.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uploadId\": \"abc123\",\n  \"key\": \"a1b2c3d4/artwork.png\",\n  \"bucket\": \"superrare-ipfs\",\n  \"partSize\": 10000000,\n  \"presignedUrls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"gatewayBaseUrl\": \"https://superrare.myfilebase.com\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6a88f61-0ab8-4afc-8c14-a4ffc614354d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata",
+                    "media",
+                    "uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileSize\": 5000000,\n  \"filename\": \"artwork.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "120e940d-d368-4488-aff5-a2165dc447ef",
+          "name": "Complete Media Upload",
+          "request": {
+            "name": "Complete Media Upload",
+            "description": {
+              "content": "Complete a multipart upload, resolve IPFS CID, and return IPFS/gateway URLs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts",
+                "metadata",
+                "media",
+                "uploads",
+                "complete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"uploadId\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"parts\": [\n    {\n      \"ETag\": \"<string>\",\n      \"PartNumber\": \"<integer>\"\n    },\n    {\n      \"ETag\": \"<string>\",\n      \"PartNumber\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fa5fba1-9dd5-4312-87dd-b6a35203a513",
+              "name": "Upload completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata",
+                    "media",
+                    "uploads",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"a1b2c3d4/artwork.png\",\n  \"uploadId\": \"abc123\",\n  \"bucket\": \"superrare-ipfs\",\n  \"parts\": [\n    {\n      \"ETag\": \"<string>\",\n      \"PartNumber\": \"<integer>\"\n    },\n    {\n      \"ETag\": \"<string>\",\n      \"PartNumber\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cid\": \"QmExampleCid\",\n  \"ipfsUrl\": \"ipfs://QmExampleCid\",\n  \"gatewayUrl\": \"https://superrare.myfilebase.com/ipfs/QmExampleCid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "469fbd5e-3124-4dcc-9c80-0fddff2c094b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata",
+                    "media",
+                    "uploads",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"a1b2c3d4/artwork.png\",\n  \"uploadId\": \"abc123\",\n  \"bucket\": \"superrare-ipfs\",\n  \"parts\": [\n    {\n      \"ETag\": \"<string>\",\n      \"PartNumber\": \"<integer>\"\n    },\n    {\n      \"ETag\": \"<string>\",\n      \"PartNumber\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fec5ab2d-f3ca-455b-8912-fee8b2b61b0e",
+          "name": "Generate Media Metadata",
+          "request": {
+            "name": "Generate Media Metadata",
+            "description": {
+              "content": "Call pipelines to extract media metadata (dimensions, size, type) from a URI\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "nfts",
+                "metadata",
+                "media",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uri\": \"<string>\",\n  \"mimeType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c6c2f5a-78d0-4610-bafd-75f2f9defe44",
+              "name": "Media metadata generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata",
+                    "media",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uri\": \"ipfs://QmMediaCid\",\n  \"mimeType\": \"image/png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"media\": {\n    \"uri\": \"string\",\n    \"mimeType\": \"string\",\n    \"size\": 5673,\n    \"dimensions\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f03b2b64-203d-4037-8d7c-b367be99e36a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nfts",
+                    "metadata",
+                    "media",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uri\": \"ipfs://QmMediaCid\",\n  \"mimeType\": \"image/png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.superrare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1bb25519-c034-440f-b22a-0f0794e42704",
+    "name": "SuperRare Marketplace Collections Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.\n\n\nContact Support:\n Name: SuperRare Support",
+      "type": "text/plain"
+    }
+  }
+}

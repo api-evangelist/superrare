@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SuperRare Marketplace Collections Media API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pin NFT Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/nfts/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assemble NFT metadata JSON from media assets and pin to IPFS via Filebase"
+        },
+        {
+          "info": {
+            "name": "Create Media Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/nfts/metadata/media/uploads",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a multipart upload to Filebase/IPFS, returning presigned URLs for each part\n"
+        },
+        {
+          "info": {
+            "name": "Complete Media Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/nfts/metadata/media/uploads/complete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete a multipart upload, resolve IPFS CID, and return IPFS/gateway URLs"
+        },
+        {
+          "info": {
+            "name": "Generate Media Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.superrare.com/v1/nfts/metadata/media/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Call pipelines to extract media metadata (dimensions, size, type) from a URI\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
