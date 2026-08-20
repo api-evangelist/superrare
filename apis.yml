@@ -38,6 +38,12 @@ apis:
   - Creator
   - Profile
   - Storefront
+  - Authentication
+  - SDK
+  tags_raw:
+  - Creator
+  - Profile
+  - Storefront
   - OAuth
   - SDK
   properties:
@@ -125,6 +131,8 @@ apis:
   humanURL: https://developer.superrare.com/
   baseURL: https://api.superrare.com
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -188,6 +196,8 @@ apis:
   humanURL: https://developer.superrare.com/
   baseURL: https://api.superrare.com
   tags:
+  - NFT
+  tags_raw:
   - NFTs
   properties:
   - type: OpenAPI
@@ -230,6 +240,8 @@ apis:
   humanURL: https://developer.superrare.com/
   baseURL: https://api.superrare.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
