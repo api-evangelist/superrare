@@ -210,7 +210,7 @@ apis:
   humanURL: https://developer.superrare.com/
   baseURL: https://api.superrare.com
   tags:
-  - NFT
+  - NFTs
   tags_raw:
   - NFTs
   properties:
