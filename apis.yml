@@ -204,29 +204,6 @@ apis:
   - type: FinOps
     url: >-
       https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/finops/finops.yml
-- aid: superrare:superrare-nfts-api
-  name: SuperRare NFTs API
-  description: Search, retrieve, and manage NFT tokens and metadata
-  humanURL: https://developer.superrare.com/
-  baseURL: https://api.superrare.com
-  tags:
-  - NFT
-  tags_raw:
-  - NFTs
-  properties:
-  - type: OpenAPI
-    url: openapi/superrare-nfts-api-openapi.yml
-  - type: Documentation
-    url: https://developer.superrare.com/
-  - type: Plans
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/plans/plans.yml
-  - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/rate-limits/rate-limits.yml
-  - type: FinOps
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/finops/finops.yml
 - aid: superrare:superrare-tokens-api
   name: SuperRare Tokens API
   description: Retrieve token price data
@@ -260,6 +237,27 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/superrare-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.superrare.com/
+  - type: Plans
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/finops/finops.yml
+- aid: superrare:superrare-nf-ts-api
+  name: SuperRare NF Ts API
+  description: Search, retrieve, and manage NFT tokens and metadata
+  humanURL: https://github.com/superrare/rare-profile
+  baseURL: https://beta.rare.xyz
+  tags:
+  - NF Ts
+  properties:
+  - type: OpenAPI
+    url: openapi/superrare-nf-ts-api-openapi.yml
   - type: Documentation
     url: https://developer.superrare.com/
   - type: Plans
