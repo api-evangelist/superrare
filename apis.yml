@@ -248,16 +248,16 @@ apis:
   - type: FinOps
     url: >-
       https://raw.githubusercontent.com/api-evangelist/superrare/refs/heads/main/finops/finops.yml
-- aid: superrare:superrare-nf-ts-api
+- aid: superrare:superrare-nfts-api
   name: SuperRare NF Ts API
   description: Search, retrieve, and manage NFT tokens and metadata
   humanURL: https://github.com/superrare/rare-profile
   baseURL: https://beta.rare.xyz
   tags:
-  - NF Ts
+  - NFTs
   properties:
   - type: OpenAPI
-    url: openapi/superrare-nf-ts-api-openapi.yml
+    url: openapi/superrare-nfts-api-openapi.yml
   - type: Documentation
     url: https://developer.superrare.com/
   - type: Plans
