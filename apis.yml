@@ -49,8 +49,8 @@ apis:
   humanURL: https://github.com/superrare/rare-profile
   baseURL: https://beta.rare.xyz
   tags:
-  - Creator
-  - Profile
+  - Creators
+  - Profiles
   - Storefront
   - Authentication
   - SDK
@@ -254,6 +254,8 @@ apis:
   humanURL: https://github.com/superrare/rare-profile
   baseURL: https://beta.rare.xyz
   tags:
+  - NFT
+  tags_raw:
   - NFTs
   properties:
   - type: OpenAPI
