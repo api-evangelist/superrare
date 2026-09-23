@@ -1,12 +1,7 @@
 {
   "provider": "superrare",
   "sources": [
-    "superrare-collections-api-openapi.yml",
-    "superrare-media-api-openapi.yml",
-    "superrare-merkle-roots-api-openapi.yml",
-    "superrare-nfts-api-openapi.yml",
-    "superrare-tokens-api-openapi.yml",
-    "superrare-users-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
     "superrare-collections-api-openapi.yml",
@@ -16,9 +11,23 @@
     "superrare-tokens-api-openapi.yml",
     "superrare-users-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: superrare-nf-ts-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 10 total)"
+  ],
+  "skipped": [
+    "superrare-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "superrare-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "superrare-merkle-roots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "superrare-nf-ts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "superrare-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "superrare-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

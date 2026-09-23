@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SuperRare Marketplace Collections Users API
-  description: 'REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
-
-    '
+  title: SuperRare Marketplace Users API
+  description: REST API providing programmatic access to SuperRare NFT metadata, artist profiles, auction data, collection information, sales history, and Merkle root/proof flows for batch operations on the SuperRare NFT marketplace built on Ethereum.
   version: 1.0.0
   contact:
     name: SuperRare Support
@@ -82,16 +80,16 @@ components:
             isCreator:
               type: boolean
               example: true
-    EthereumAddress:
-      type: string
-      description: Checksummed Ethereum address
-      pattern: ^0x[0-9a-fA-F]{40}$
-      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+    EthereumAddress:
+      type: string
+      description: Checksummed Ethereum address
+      pattern: ^0x[0-9a-fA-F]{40}$
+      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/
