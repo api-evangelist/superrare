@@ -50,11 +50,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
     TokenPriceResponse:
       type: object
       properties:
@@ -75,6 +70,11 @@ components:
       type: string
       description: Token symbol (case-insensitive)
       example: rare
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/

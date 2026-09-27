@@ -49,6 +49,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    EthereumAddress:
+      type: string
+      description: Checksummed Ethereum address
+      pattern: ^0x[0-9a-fA-F]{40}$
+      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
     UserProfile:
       type: object
       properties:
@@ -80,16 +90,6 @@ components:
             isCreator:
               type: boolean
               example: true
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-    EthereumAddress:
-      type: string
-      description: Checksummed Ethereum address
-      pattern: ^0x[0-9a-fA-F]{40}$
-      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/
