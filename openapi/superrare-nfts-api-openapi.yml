@@ -295,6 +295,21 @@ paths:
                     $ref: '#/components/schemas/Pagination'
 components:
   schemas:
+    Currency:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        symbol:
+          type: string
+          example: ETH
+        decimals:
+          type: integer
+          example: 18
+        chainId:
+          type: integer
+          example: 1
     TransferEvent:
       type: object
       properties:
@@ -324,6 +339,10 @@ components:
         amount:
           type: string
           example: '1'
+    ChainId:
+      type: integer
+      description: Supported blockchain network id
+      example: 1
     LastSale:
       type: object
       nullable: true
@@ -333,110 +352,35 @@ components:
           example: evt_123
         price:
           $ref: '#/components/schemas/CryptoValue'
-    CreationEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - CREATE_NFT
-          - CREATE_NFT_SUPPLY
-        creator:
-          $ref: '#/components/schemas/User'
-        amount:
-          type: string
-          example: '100'
-    Auction:
-      type: object
-      properties:
-        contractAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        type:
-          type: string
-          enum:
-          - RESERVE_AUCTION
-          - BATCH_RESERVE_AUCTION
-          - SCHEDULED_AUCTION
-          example: RESERVE_AUCTION
-        state:
-          type: string
-          enum:
-          - PENDING
-          - RUNNING
-          - UNSETTLED
-          example: RUNNING
-        startTime:
-          type: string
-          nullable: true
-          example: '2024-01-01T00:00:00.000Z'
-        endTime:
-          type: string
-          nullable: true
-          example: '2024-01-02T00:00:00.000Z'
-        currencyAddress:
-          type: string
-          example: '0x0000000000000000000000000000000000000000'
-        sellerAddress:
-          type: string
-          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
-        currentBid:
-          $ref: '#/components/schemas/CryptoValue'
-        reservePrice:
-          $ref: '#/components/schemas/CryptoValue'
-        highestBidder:
-          $ref: '#/components/schemas/User'
-        merkleRoot:
-          type: string
-          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
-    Currency:
+    User:
       type: object
       properties:
         address:
           type: string
-          example: '0x0000000000000000000000000000000000000000'
-        symbol:
-          type: string
-          example: ETH
-        decimals:
-          type: integer
-          example: 18
-        chainId:
-          type: integer
-          example: 1
-    Offer:
-      type: object
-      properties:
-        contractAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        type:
-          type: string
-          enum:
-          - OFFER
-          - BATCH_OFFER
-          example: OFFER
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-        buyer:
-          $ref: '#/components/schemas/User'
-        buyerAddress:
-          type: string
           example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+        username:
+          type: string
+          nullable: true
+          example: satoshi
+        avatar:
+          type: string
+          nullable: true
+          example: https://example.com/avatar.png
+        fullName:
+          type: string
+          nullable: true
+          example: Satoshi Nakamoto
+    NftEvent:
+      oneOf:
+      - $ref: '#/components/schemas/SaleEvent'
+      - $ref: '#/components/schemas/TransferEvent'
+      - $ref: '#/components/schemas/CreationEvent'
+      - $ref: '#/components/schemas/ListingEvent'
+      - $ref: '#/components/schemas/OfferEvent'
+      - $ref: '#/components/schemas/AuctionBidEvent'
+      - $ref: '#/components/schemas/AuctionLifecycleEvent'
+      discriminator:
+        propertyName: eventType
     AuctionLifecycleEvent:
       type: object
       properties:
@@ -475,100 +419,11 @@ components:
           type: string
           nullable: true
           example: '2024-01-01T00:00:00.000Z'
-    User:
-      type: object
-      properties:
-        address:
-          type: string
-          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
-        username:
-          type: string
-          nullable: true
-          example: satoshi
-        avatar:
-          type: string
-          nullable: true
-          example: https://example.com/avatar.png
-        fullName:
-          type: string
-          nullable: true
-          example: Satoshi Nakamoto
-    ListingEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - MAKE_LISTING
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-        targetBuyer:
-          $ref: '#/components/schemas/User'
     EthereumAddress:
       type: string
       description: Checksummed Ethereum address
       pattern: ^0x[0-9a-fA-F]{40}$
       example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
-    CryptoValue:
-      type: object
-      properties:
-        cryptoAmount:
-          type: string
-          example: '1000000000000000000'
-        currency:
-          $ref: '#/components/schemas/Currency'
-        usdAmount:
-          type: number
-          nullable: true
-          example: 3500
-    OfferEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - MAKE_OFFER
-          - CANCEL_OFFER
-        buyer:
-          $ref: '#/components/schemas/User'
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-    ChainId:
-      type: integer
-      description: Supported blockchain network id
-      example: 1
-    UniversalTokenId:
-      type: string
-      description: Canonical NFT identifier in chainId-contractAddress-tokenId format
-      example: 1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345
     Nft:
       type: object
       properties:
@@ -665,26 +520,57 @@ components:
         createdAt:
           type: integer
           example: 1704067200
-    Pagination:
+    ListingEvent:
       type: object
       properties:
-        page:
-          type: integer
-          example: 1
-        perPage:
-          type: integer
-          example: 20
-        totalCount:
-          type: integer
-          example: 100
-        totalPages:
-          type: integer
-          example: 5
-    ErrorResponse:
-      type: object
-      properties:
-        error:
+        eventId:
           type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - MAKE_LISTING
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        targetBuyer:
+          $ref: '#/components/schemas/User'
+    OfferEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - MAKE_OFFER
+          - CANCEL_OFFER
+        buyer:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
     Listing:
       type: object
       properties:
@@ -711,46 +597,6 @@ components:
           properties:
             root:
               type: string
-    NftEvent:
-      oneOf:
-      - $ref: '#/components/schemas/SaleEvent'
-      - $ref: '#/components/schemas/TransferEvent'
-      - $ref: '#/components/schemas/CreationEvent'
-      - $ref: '#/components/schemas/ListingEvent'
-      - $ref: '#/components/schemas/OfferEvent'
-      - $ref: '#/components/schemas/AuctionBidEvent'
-      - $ref: '#/components/schemas/AuctionLifecycleEvent'
-      discriminator:
-        propertyName: eventType
-    SaleEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - SETTLE_AUCTION
-          - TAKE_LISTING
-          - TAKE_OFFER
-        buyer:
-          $ref: '#/components/schemas/User'
-        seller:
-          $ref: '#/components/schemas/User'
-        price:
-          $ref: '#/components/schemas/CryptoValue'
     AuctionBidEvent:
       type: object
       properties:
@@ -781,6 +627,160 @@ components:
         extendsAuction:
           type: boolean
           example: false
+    CreationEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - CREATE_NFT
+          - CREATE_NFT_SUPPLY
+        creator:
+          $ref: '#/components/schemas/User'
+        amount:
+          type: string
+          example: '100'
+    Offer:
+      type: object
+      properties:
+        contractAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        type:
+          type: string
+          enum:
+          - OFFER
+          - BATCH_OFFER
+          example: OFFER
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        buyer:
+          $ref: '#/components/schemas/User'
+        buyerAddress:
+          type: string
+          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+    CryptoValue:
+      type: object
+      properties:
+        cryptoAmount:
+          type: string
+          example: '1000000000000000000'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        usdAmount:
+          type: number
+          nullable: true
+          example: 3500
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        perPage:
+          type: integer
+          example: 20
+        totalCount:
+          type: integer
+          example: 100
+        totalPages:
+          type: integer
+          example: 5
+    SaleEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - SETTLE_AUCTION
+          - TAKE_LISTING
+          - TAKE_OFFER
+        buyer:
+          $ref: '#/components/schemas/User'
+        seller:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    Auction:
+      type: object
+      properties:
+        contractAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        type:
+          type: string
+          enum:
+          - RESERVE_AUCTION
+          - BATCH_RESERVE_AUCTION
+          - SCHEDULED_AUCTION
+          example: RESERVE_AUCTION
+        state:
+          type: string
+          enum:
+          - PENDING
+          - RUNNING
+          - UNSETTLED
+          example: RUNNING
+        startTime:
+          type: string
+          nullable: true
+          example: '2024-01-01T00:00:00.000Z'
+        endTime:
+          type: string
+          nullable: true
+          example: '2024-01-02T00:00:00.000Z'
+        currencyAddress:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        sellerAddress:
+          type: string
+          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+        currentBid:
+          $ref: '#/components/schemas/CryptoValue'
+        reservePrice:
+          $ref: '#/components/schemas/CryptoValue'
+        highestBidder:
+          $ref: '#/components/schemas/User'
+        merkleRoot:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+    UniversalTokenId:
+      type: string
+      description: Canonical NFT identifier in chainId-contractAddress-tokenId format
+      example: 1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/

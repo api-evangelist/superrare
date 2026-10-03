@@ -66,15 +66,15 @@ components:
               type: integer
             address:
               type: string
-    TokenSymbol:
-      type: string
-      description: Token symbol (case-insensitive)
-      example: rare
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+    TokenSymbol:
+      type: string
+      description: Token symbol (case-insensitive)
+      example: rare
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/

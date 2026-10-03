@@ -123,102 +123,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CreateMediaUploadResponse:
-      type: object
-      properties:
-        uploadId:
-          type: string
-          example: abc123
-        key:
-          type: string
-          example: a1b2c3d4/artwork.png
-        bucket:
-          type: string
-          example: superrare-ipfs
-        partSize:
-          type: integer
-          example: 10000000
-        presignedUrls:
-          type: array
-          items:
-            type: string
-        gatewayBaseUrl:
-          type: string
-          example: https://superrare.myfilebase.com
-    GenerateMediaRequest:
-      type: object
-      required:
-      - uri
-      - mimeType
-      properties:
-        uri:
-          type: string
-          example: ipfs://QmMediaCid
-        mimeType:
-          type: string
-          example: image/png
-    GenerateMediaResponse:
-      type: object
-      properties:
-        media:
-          type: object
-          properties:
-            uri:
-              type: string
-            mimeType:
-              type: string
-            size:
-              type: integer
-            dimensions:
-              type: string
-    CreateNftMetadataRequest:
-      type: object
-      required:
-      - name
-      - description
-      - tags
-      - nftMedia
-      properties:
-        name:
-          type: string
-          example: My NFT
-        description:
-          type: string
-          example: A beautiful artwork
-        tags:
-          type: array
-          items:
-            type: string
-          example:
-          - art
-          - digital
-        attributes:
-          type: array
-          items:
-            type: object
-            properties:
-              trait_type:
-                type: string
-              value:
-                oneOf:
-                - type: string
-                - type: number
-                - type: boolean
-              display_type:
-                type: string
-        nftMedia:
-          $ref: '#/components/schemas/NftMediaInput'
-    CreateMediaUploadRequest:
-      type: object
-      required:
-      - fileSize
-      properties:
-        fileSize:
-          type: integer
-          example: 5000000
-        filename:
-          type: string
-          example: artwork.png
     MediaAsset:
       type: object
       required:
@@ -243,32 +147,51 @@ components:
               type: integer
             height:
               type: integer
-    CompleteMediaUploadRequest:
+    IpfsUploadResponse:
+      type: object
+      properties:
+        cid:
+          type: string
+          example: QmExampleCid
+        ipfsUrl:
+          type: string
+          example: ipfs://QmExampleCid
+        gatewayUrl:
+          type: string
+          example: https://superrare.myfilebase.com/ipfs/QmExampleCid
+    CreateMediaUploadRequest:
       type: object
       required:
-      - key
-      - uploadId
-      - bucket
-      - parts
+      - fileSize
       properties:
-        key:
+        fileSize:
+          type: integer
+          example: 5000000
+        filename:
           type: string
-          example: a1b2c3d4/artwork.png
+          example: artwork.png
+    CreateMediaUploadResponse:
+      type: object
+      properties:
         uploadId:
           type: string
           example: abc123
+        key:
+          type: string
+          example: a1b2c3d4/artwork.png
         bucket:
           type: string
           example: superrare-ipfs
-        parts:
+        partSize:
+          type: integer
+          example: 10000000
+        presignedUrls:
           type: array
           items:
-            type: object
-            properties:
-              ETag:
-                type: string
-              PartNumber:
-                type: integer
+            type: string
+        gatewayBaseUrl:
+          type: string
+          example: https://superrare.myfilebase.com
     CreateNftMetadataResponse:
       type: object
       properties:
@@ -318,18 +241,23 @@ components:
                     - type: boolean
                   display_type:
                     type: string
-    IpfsUploadResponse:
+    GenerateMediaRequest:
+      type: object
+      required:
+      - uri
+      - mimeType
+      properties:
+        uri:
+          type: string
+          example: ipfs://QmMediaCid
+        mimeType:
+          type: string
+          example: image/png
+    ErrorResponse:
       type: object
       properties:
-        cid:
+        error:
           type: string
-          example: QmExampleCid
-        ipfsUrl:
-          type: string
-          example: ipfs://QmExampleCid
-        gatewayUrl:
-          type: string
-          example: https://superrare.myfilebase.com/ipfs/QmExampleCid
     NftMediaInput:
       type: object
       required:
@@ -343,11 +271,83 @@ components:
           $ref: '#/components/schemas/MediaAsset'
         html:
           $ref: '#/components/schemas/MediaAsset'
-    ErrorResponse:
+    CreateNftMetadataRequest:
+      type: object
+      required:
+      - name
+      - description
+      - tags
+      - nftMedia
+      properties:
+        name:
+          type: string
+          example: My NFT
+        description:
+          type: string
+          example: A beautiful artwork
+        tags:
+          type: array
+          items:
+            type: string
+          example:
+          - art
+          - digital
+        attributes:
+          type: array
+          items:
+            type: object
+            properties:
+              trait_type:
+                type: string
+              value:
+                oneOf:
+                - type: string
+                - type: number
+                - type: boolean
+              display_type:
+                type: string
+        nftMedia:
+          $ref: '#/components/schemas/NftMediaInput'
+    CompleteMediaUploadRequest:
+      type: object
+      required:
+      - key
+      - uploadId
+      - bucket
+      - parts
+      properties:
+        key:
+          type: string
+          example: a1b2c3d4/artwork.png
+        uploadId:
+          type: string
+          example: abc123
+        bucket:
+          type: string
+          example: superrare-ipfs
+        parts:
+          type: array
+          items:
+            type: object
+            properties:
+              ETag:
+                type: string
+              PartNumber:
+                type: integer
+    GenerateMediaResponse:
       type: object
       properties:
-        error:
-          type: string
+        media:
+          type: object
+          properties:
+            uri:
+              type: string
+            mimeType:
+              type: string
+            size:
+              type: integer
+            dimensions:
+              type: string
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/
