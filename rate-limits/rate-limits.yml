@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: SuperRare API Rate Limits
 description: SuperRare does not publish explicit rate limit tiers for its REST API. Smart contract interactions are limited by Ethereum network throughput and gas. The rare-cli documentation explicitly warns that public Ethereum RPC endpoints are rate-limited and unreliable, recommending dedicated RPC providers for production use.
 url: https://developer.superrare.com/

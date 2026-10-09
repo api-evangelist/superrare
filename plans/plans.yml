@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: SuperRare API Plans
 description: SuperRare operates a curated NFT marketplace. The platform does not publicly advertise tiered REST API access plans. Smart contract interaction is permissionless on-chain. The creator profile API uses OAuth tokens with defined scopes. Public RPC endpoints are rate-limited; production use requires a dedicated RPC provider such as Alchemy or Infura.
 url: https://developer.superrare.com/
@@ -40,3 +44,21 @@ plans:
       - events
       - studio
     rateLimits: []
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Public / Open
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Creator / OAuth
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
