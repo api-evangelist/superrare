@@ -295,7 +295,7 @@ paths:
                     $ref: '#/components/schemas/Pagination'
 components:
   schemas:
-    ListingEvent:
+    CreationEvent:
       type: object
       properties:
         eventId:
@@ -315,11 +315,13 @@ components:
         eventType:
           type: string
           enum:
-          - MAKE_LISTING
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-        targetBuyer:
+          - CREATE_NFT
+          - CREATE_NFT_SUPPLY
+        creator:
           $ref: '#/components/schemas/User'
+        amount:
+          type: string
+          example: '100'
     OfferEvent:
       type: object
       properties:
@@ -346,21 +348,21 @@ components:
           $ref: '#/components/schemas/User'
         price:
           $ref: '#/components/schemas/CryptoValue'
-    NftEvent:
-      oneOf:
-      - $ref: '#/components/schemas/SaleEvent'
-      - $ref: '#/components/schemas/TransferEvent'
-      - $ref: '#/components/schemas/CreationEvent'
-      - $ref: '#/components/schemas/ListingEvent'
-      - $ref: '#/components/schemas/OfferEvent'
-      - $ref: '#/components/schemas/AuctionBidEvent'
-      - $ref: '#/components/schemas/AuctionLifecycleEvent'
-      discriminator:
-        propertyName: eventType
-    ChainId:
-      type: integer
-      description: Supported blockchain network id
-      example: 1
+    Currency:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        symbol:
+          type: string
+          example: ETH
+        decimals:
+          type: integer
+          example: 18
+        chainId:
+          type: integer
+          example: 1
     Pagination:
       type: object
       properties:
@@ -376,15 +378,48 @@ components:
         totalPages:
           type: integer
           example: 5
-    LastSale:
+    EthereumAddress:
+      type: string
+      description: Checksummed Ethereum address
+      pattern: ^0x[0-9a-fA-F]{40}$
+      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+    UniversalTokenId:
+      type: string
+      description: Canonical NFT identifier in chainId-contractAddress-tokenId format
+      example: 1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345
+    TransferEvent:
       type: object
-      nullable: true
       properties:
         eventId:
           type: string
           example: evt_123
-        price:
-          $ref: '#/components/schemas/CryptoValue'
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
+          type: integer
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - TRANSFER_NFT
+          - TRANSFER_NFT_SUPPLY
+        from:
+          $ref: '#/components/schemas/User'
+        to:
+          $ref: '#/components/schemas/User'
+        amount:
+          type: string
+          example: '1'
+    ChainId:
+      type: integer
+      description: Supported blockchain network id
+      example: 1
     Auction:
       type: object
       properties:
@@ -428,7 +463,37 @@ components:
         merkleRoot:
           type: string
           example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
-    TransferEvent:
+    NftEvent:
+      oneOf:
+      - $ref: '#/components/schemas/SaleEvent'
+      - $ref: '#/components/schemas/TransferEvent'
+      - $ref: '#/components/schemas/CreationEvent'
+      - $ref: '#/components/schemas/ListingEvent'
+      - $ref: '#/components/schemas/OfferEvent'
+      - $ref: '#/components/schemas/AuctionBidEvent'
+      - $ref: '#/components/schemas/AuctionLifecycleEvent'
+      discriminator:
+        propertyName: eventType
+    Offer:
+      type: object
+      properties:
+        contractAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        type:
+          type: string
+          enum:
+          - OFFER
+          - BATCH_OFFER
+          example: OFFER
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        buyer:
+          $ref: '#/components/schemas/User'
+        buyerAddress:
+          type: string
+          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+    AuctionBidEvent:
       type: object
       properties:
         eventId:
@@ -448,39 +513,96 @@ components:
         eventType:
           type: string
           enum:
-          - TRANSFER_NFT
-          - TRANSFER_NFT_SUPPLY
-        from:
+          - MAKE_AUCTION_BID
+        bidder:
           $ref: '#/components/schemas/User'
-        to:
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        previousBidder:
           $ref: '#/components/schemas/User'
-        amount:
-          type: string
-          example: '1'
-    ErrorResponse:
+        extendsAuction:
+          type: boolean
+          example: false
+    Listing:
       type: object
       properties:
-        error:
+        contractAddress:
           type: string
-    Currency:
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        type:
+          type: string
+          enum:
+          - SALE_PRICE
+          - BATCH_SALE_PRICE
+          example: SALE_PRICE
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        seller:
+          type: string
+          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
+        merkleRoot:
+          type: string
+          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
+        allowlist:
+          type: object
+          nullable: true
+          properties:
+            root:
+              type: string
+    SaleEvent:
       type: object
       properties:
-        address:
+        eventId:
           type: string
-          example: '0x0000000000000000000000000000000000000000'
-        symbol:
+          example: evt_123
+        createdAt:
           type: string
-          example: ETH
-        decimals:
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
           type: integer
-          example: 18
-        chainId:
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - SETTLE_AUCTION
+          - TAKE_LISTING
+          - TAKE_OFFER
+        buyer:
+          $ref: '#/components/schemas/User'
+        seller:
+          $ref: '#/components/schemas/User'
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+    ListingEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        createdAt:
+          type: string
+          example: '2024-01-01T00:00:00.000Z'
+        transactionHash:
+          type: string
+          nullable: true
+          example: '0xabc123'
+        blockNumber:
           type: integer
-          example: 1
-    UniversalTokenId:
-      type: string
-      description: Canonical NFT identifier in chainId-contractAddress-tokenId format
-      example: 1-0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0-12345
+          nullable: true
+          example: 12345678
+        eventType:
+          type: string
+          enum:
+          - MAKE_LISTING
+        price:
+          $ref: '#/components/schemas/CryptoValue'
+        targetBuyer:
+          $ref: '#/components/schemas/User'
     Nft:
       type: object
       properties:
@@ -577,6 +699,20 @@ components:
         createdAt:
           type: integer
           example: 1704067200
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    LastSale:
+      type: object
+      nullable: true
+      properties:
+        eventId:
+          type: string
+          example: evt_123
+        price:
+          $ref: '#/components/schemas/CryptoValue'
     AuctionLifecycleEvent:
       type: object
       properties:
@@ -627,91 +763,6 @@ components:
           type: number
           nullable: true
           example: 3500
-    AuctionBidEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - MAKE_AUCTION_BID
-        bidder:
-          $ref: '#/components/schemas/User'
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-        previousBidder:
-          $ref: '#/components/schemas/User'
-        extendsAuction:
-          type: boolean
-          example: false
-    Listing:
-      type: object
-      properties:
-        contractAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        type:
-          type: string
-          enum:
-          - SALE_PRICE
-          - BATCH_SALE_PRICE
-          example: SALE_PRICE
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-        seller:
-          type: string
-          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
-        merkleRoot:
-          type: string
-          example: '0xcf6398559ea0e93d7d7233ca93b09912da8ff57b45ebe7a3ede9c74d17a76f13'
-        allowlist:
-          type: object
-          nullable: true
-          properties:
-            root:
-              type: string
-    SaleEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - SETTLE_AUCTION
-          - TAKE_LISTING
-          - TAKE_OFFER
-        buyer:
-          $ref: '#/components/schemas/User'
-        seller:
-          $ref: '#/components/schemas/User'
-        price:
-          $ref: '#/components/schemas/CryptoValue'
     User:
       type: object
       properties:
@@ -730,57 +781,6 @@ components:
           type: string
           nullable: true
           example: Satoshi Nakamoto
-    EthereumAddress:
-      type: string
-      description: Checksummed Ethereum address
-      pattern: ^0x[0-9a-fA-F]{40}$
-      example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
-    Offer:
-      type: object
-      properties:
-        contractAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        type:
-          type: string
-          enum:
-          - OFFER
-          - BATCH_OFFER
-          example: OFFER
-        price:
-          $ref: '#/components/schemas/CryptoValue'
-        buyer:
-          $ref: '#/components/schemas/User'
-        buyerAddress:
-          type: string
-          example: '0xba5BDe662c17e2aDFF1075610382B9B691296350'
-    CreationEvent:
-      type: object
-      properties:
-        eventId:
-          type: string
-          example: evt_123
-        createdAt:
-          type: string
-          example: '2024-01-01T00:00:00.000Z'
-        transactionHash:
-          type: string
-          nullable: true
-          example: '0xabc123'
-        blockNumber:
-          type: integer
-          nullable: true
-          example: 12345678
-        eventType:
-          type: string
-          enum:
-          - CREATE_NFT
-          - CREATE_NFT_SUPPLY
-        creator:
-          $ref: '#/components/schemas/User'
-        amount:
-          type: string
-          example: '100'
 externalDocs:
   description: SuperRare Developer Documentation
   url: https://developer.superrare.com/
